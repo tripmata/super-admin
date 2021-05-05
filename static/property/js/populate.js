@@ -1,5 +1,5 @@
 
-	const reportCache = {reservations : [], customers : [], inHouseGuests : []};
+	const reportCache = {reservations : [], customers : [], inHouseGuests : [], payments : [], users : []};
 
 	function populatePropertySettings()
 	{
@@ -59,11 +59,27 @@
 						partialpayment : d.data.Partialpayment,
 						partialpayamount : d.data.Partialpayamount,
 						childpolicy : d.data.Childpolicy,
-						childfee : d.data.ExtraChildFee
+						childfee : d.data.ExtraChildFee,
+						checkin_start : d.data.CheckInStarts,
+						checkin_end : d.data.CheckInEnds,
+						checkout_start : d.data.CheckOutStarts,
+						checkout_end : d.data.CheckOutEnds
 					});
 
+					// @var array gallery
+					let gallery = [];
+
 					// add banner
-					d.data.Gallery.unshift(d.data.Banner);
+					gallery.push(d.data.Banner);
+
+					// load others
+					if (typeof d.data.Gallery == 'object')
+					{
+						for (var g in d.data.Gallery) gallery.push(d.data.Gallery[g]);
+					}
+					
+					// update gallery
+					d.data.Gallery = gallery;
 
 					// load images
 					drawPropertyGallery('#property-gallery', {
@@ -464,7 +480,7 @@
 
 						let td3 = document.createElement("td");
 						td3.style.lineHeight = "170%";
-						td3.innerHTML = d.data[i].Paid ? "<span class='green status'>Paid</span>" : "<span class='red status'>Unpaid</span>";
+						td3.innerHTML = d.data[i].Paid ? "<span class='green-back status'>Paid</span>" : "<span class='red-back status'>Unpaid</span>";
 
 						let td4 = document.createElement("td");
 						td4.style.lineHeight = "170%";
@@ -478,7 +494,7 @@
 
 						let isOverdue = reservationIsOverdue(d.data[i]);
 						td5.style.lineHeight = "170%";
-						td5.innerHTML = ((d.data[i].Noshow == 1) ? "<span class='status red-back' style='background:#f20; color:#fff !important;'>No show</span>" : (d.data[i].Checkedin == true ? "<span class='green status'>Checked in</span>" : "<span class='status yellow-back'>Pending</span>"));
+						td5.innerHTML = ((d.data[i].Noshow == 1) ? "<span class='status red-back' style='background:#f20; color:#fff !important;'>No show</span>" : (d.data[i].Checkedin == true ? "<span class='green-back status'>Checked in</span>" : "<span class='status yellow-back'>Pending</span>"));
 							
 						// is overdue
 						if ((isOverdue || d.data[i].IsOverDue) && d.data[i].Noshow == 0) td5.innerHTML = "<span class='status red-back'>Overdue</span>";
@@ -486,6 +502,11 @@
 						// pending overdue
 						if (d.data[i].UnconfirmedNoShow == 1) td5.innerHTML = "<span class='status' style='background:#FFBF00; color:#fff;' title='Pending Confirmation'>No show</span>";
 
+						// checkedout
+						if (d.data[i].Checkedout == true) td5.innerHTML = "<span class='checked-out status'>Checked out</span>";
+
+						// cancelled
+						if (d.data[i].Cancelled == true) td5.innerHTML = "<span class='checked-out status'>Cancelled</span>";
 
 						let td6 = document.createElement("td");
 						td6.innerHTML = "<div class='w3-container'> " +
@@ -495,7 +516,7 @@
 							"<div class='header'>Action</div>" +
 							"<a class='item' href='#reservation-detail/" + d.data[i].Id + "'><i class='eye icon'></i>Open reservation</a>" +
 							((d.data[i].UnconfirmedNoShow == 1 && d.data[i].isApprovedByPartnerAdmin == 0) ? "<a class='item' href='javascript:void(0);' onclick=\"confirmNoShow('" + d.data[i].Id + "')\"><i class='check icon'></i>Confirm No Show</a>" : "") +
-							((d.data[i].Noshow == 0 && d.data[i].Cancelable == true && isAllowed && d.data[i].Noshow == 0 && d.data[i].UnconfirmedNoShow == 0) ? "<div class='ui divider'></div>" + "<div class='item' onclick=\"ConfirmReservationDelete('" + d.data[i].Id + "')\"><i class='trash icon'></i>Cancel reservation</div>" : "")
+							((d.data[i].Noshow == 0 && d.data[i].Cancelable == true && isAllowed && d.data[i].Noshow == 0 && d.data[i].UnconfirmedNoShow == 0 && d.data[i].Cancelled == false) ? "<div class='ui divider'></div>" + "<div class='item' onclick=\"ConfirmReservationDelete('" + d.data[i].Id + "')\"><i class='trash icon'></i>Cancel reservation</div>" : "")
 							"</div>" +
 							"</div></div>";
 
@@ -525,6 +546,279 @@
 				//
 			}
 		}, request);
+	}
+
+	var currentPage = 0;
+
+	function populateReport(page=null)
+	{
+		let start = page == null ? 0 : page;
+		page = page == null ? 1 : page;
+
+		let sn = start + 1;
+		let perpage = 25;
+
+		$("#table-body").html("");
+
+		if ($("#perpage").dropdown('get value') != "")
+		{
+			perpage = $("#perpage").dropdown('get value');
+		}
+
+		let filter = "all";
+
+		if ($("#paid-report").hasClass("active"))
+		{
+			filter = "paid";
+		}
+
+		if ($("#refund-report").hasClass("active"))
+		{
+			filter = "refund";
+		}
+
+		let request = {};
+		request.Page = page;
+		request.Perpage = 25;
+		request.filter = filter;
+		request.searchterm = $("#search-txt").val();
+		request.item_type = "frontdesk_item";
+		request.job = "get report";
+
+		request.dueDate = $("#report-due-date").val();
+		request.dueDateTo = $("#report-due-date-range").val();
+		request.sort_by = $('#payment-mode').dropdown('get value');
+		request.posuser = $('#pos-user').val();
+
+		if ($("#perpage").dropdown('get value') != "")
+		{
+			request.Perpage = $("#perpage").dropdown('get value');
+		}
+
+		// add preloader
+		$("#table-body").html(tableLoader(8));
+		postJson("hms-admin/worker", function(data, status){
+			$("#table-body").html("");
+
+			if(status === "done")
+			{								
+				let d = JSON.parse(data);
+
+				if (d.Status === "success")
+				{
+					// localStorage.setItem('report', JSON.stringify(d.Data));/
+					reportCache.payments = d.Data;
+
+					// add income and refund
+					$('#total-income').html('&#8358;' + numFormat(Number(d.Income).toFixed(2)));
+					$('#total-refund').html('&#8358;' + numFormat(Number(d.Refunds).toFixed(2)));
+					
+					let sn = ((request.Page - 1) * request.Perpage) + 1;
+					$("#pages").html(Paginate(Number(request.Page), Number(d.Data.length), Number(request.Perpage), "populateReport"));
+
+					if (d.Data.length > 0)
+					{
+						for (let i = 0; i < d.Data.length; i++)
+						{
+
+							let row = document.createElement("tr");
+							row.id = d.Data[i].Id + "-row";
+							row.setAttribute("row-num", sn);
+
+							let td0 = document.createElement("td");
+							td0.innerHTML = "<label><input id='"+d.Data[i].Id+"' class='check-sel' type='checkbox' onchange='CheckProcess()'><span>" + sn + "</span></label>";
+
+							let td1 = document.createElement("td");
+							td1.style.lineHeight = "170%";
+							td1.innerHTML = "<span class='blue-text'>"+d.Data[i].Customer.Name+" "+d.Data[i].Customer.Surname+"</span>";
+
+							let td2 = document.createElement("td");
+							td2.style.lineHeight = "170%";
+							td2.innerHTML = "&#8358;"+
+							numFormat(Number(d.Data[i].Amount).toFixed(2));
+
+							let td2_ = document.createElement("td");
+							td2.style.lineHeight = "170%";
+							td2_.innerHTML = d.Data[i].UserId.Name + ' ' + d.Data[i].UserId.Surname;
+
+							let td3 = document.createElement("td");
+							td3.style.lineHeight = "170%";
+							td3.innerHTML = d.Data[i].PaymentMode;
+
+							let td4 = document.createElement("td");
+							td4.style.lineHeight = "170%";
+							td4.innerHTML = (d.Data[i].Created.Day + '/' + d.Data[i].Created.Month + '/' + d.Data[i].Created.Year);
+							
+							let td5 = document.createElement("td");
+							td5.style.lineHeight = "170%";
+							td5.innerHTML = ((d.Data[i].PaymentCode == 'refund') ? "<span class='status red-back' style='background:#f20; color:#fff !important;'>Refund</span>" : "<span class='green-back status'>"+d.Data[i].PaymentCode+"</span>");
+							
+							let td6 = document.createElement("td");
+							td6.style.lineHeight = "170%";
+							td6.innerHTML = d.Data[i].Remark;
+
+							row.appendChild(td0);
+							row.appendChild(td1);
+							row.appendChild(td2);
+							row.appendChild(td2_);
+							row.appendChild(td3);
+							row.appendChild(td4);
+							row.appendChild(td5);
+							row.appendChild(td6);
+
+							sn++;
+
+							document.getElementById("table-body").appendChild(row);
+						}
+					}
+					else
+					{
+						document.getElementById("table-body").innerHTML =
+						"<tr><td colspan='8'><div class='pad-2 align-c'><h2><i class='la la-list la-3x' style='color: silver;'></i> </h2>" +
+						"<h6 style='font-family: Nunito, quicksandregular; color: dimgray;'>"+d.Message+"</h6><br/>" +
+						"<button class='ui sleak button'>try again</button></div></td></tr>";
+					}
+				}
+				else
+				{
+					document.getElementById("table-body").innerHTML =
+						"<tr><td colspan='8'><div class='pad-2 align-c'><h2><i class='la la-list la-3x' style='color: silver;'></i> </h2>" +
+						"<h6 style='font-family: Nunito, quicksandregular; color: dimgray;'>"+d.Message+"</h6><br/>" +
+						"<button class='ui sleak button'>try again</button></div></td></tr>";
+				}
+			}
+			else
+			{
+				document.getElementById("table-body").innerHTML =
+					"<tr><td colspan='8'><div class='pad-2 align-c'><h2><i class='la la-list la-3x' style='color: silver;'></i> </h2>" +
+					"<h6 style='font-family: Nunito, quicksandregular; color: dimgray;'>Connection error</h6><br/>" +
+					"<button class='ui sleak button'>try again</button></div></td></tr>";
+			}
+		}, request);
+
+		// load admin users
+		if (reportCache.users.length == 0)
+		{
+			postJson("hms-admin/worker", function(data, status){
+
+				if (status == 'done')
+				{
+					data = JSON.parse(data);
+
+					// check status
+					if (data.status == 'success')
+					{
+						if (data.data.length > 0)
+						{
+							$('.switch-user').show();
+							reportCache.users = data.data;
+						}
+					}
+				}
+			}, {
+				job : 'get admin users',
+				Page : 1,
+				Perpage : 1000,
+				Filter : 'search list',
+				Filtervalue : ''
+			});
+		}
+		
+	}
+
+	function exportReportCSV()
+	{
+		let reports = getAllCheckedItems(reportCache.payments, 'Report');
+		if(reports != null && reports.length > 0)
+		{
+			let sn = 0;
+			let report = reports.map(e => {
+				sn += 1;
+				
+				const { Day, MonthName, Year } = e.Created;
+
+				return { 
+					SN: sn, 
+					Name: `${e.Customer.Name} ${e.Customer.Surname}`, 
+					Total: numFormat(Number(e.Amount).toFixed(2)),
+					User: `${e.UserId.Name} ${e.UserId.Surname}`,
+					Payment_mode: e.PaymentMode,
+					Date: `${Day}-${MonthName}-${Year}`, 
+					Account: e.PaymentCode, 
+					Remark: e.Remark
+				};
+			});
+	
+			const csvData = objectToCsv(report);
+			downloadCSV(csvData, 'Report-'+(new Date).getTime());
+		}
+	}
+
+	function launchUsers()
+	{
+		loadModal({title:"Generate user report", html:"<div class='pad-1'>" +
+			"<div class='ui fluid input'>" +
+			"<select onchange=\"generateReport()\" id='report-select' class='ui search fluid wix-select dropdown selection'>" +
+			generateUsersDropdown()+
+			"</select>"+
+			"</div> " +
+			"</div>", onLoaded:function(){
+				$('#report-select').dropdown();
+			}});
+	}
+
+	function generateReport()
+	{
+		var user = $('#report-select').dropdown('get value');
+
+		// name 
+		var name = 'General';
+
+		// check user
+		if (user == 'adxc0')
+		{
+			name = 'Main Admin'
+		}
+		else if (user != 'all')
+		{
+			reportCache.users.forEach((e)=>{
+				if (e.Id == user)
+				{
+					name = (e.Name + ' ' + e.Surname);
+				}
+			});
+		}
+		else if (user == 'all')
+		{
+			user = '';
+		}
+
+		// add to pos user
+		$('#pos-user').val(user);
+
+		// update title
+		$('#active-user').html(name);
+
+		// load report
+		populateReport();
+
+		// close modal
+		closeGenModal('0');
+	}
+
+	function generateUsersDropdown()
+	{
+		var options = '<option value="">Please choose</option>';
+		options += '<option value="all">General</option>';
+		options += '<option value="adxc0"> Main Admin </option>';
+
+		// load from array
+		reportCache.users.forEach((user)=>{
+			options += '<option value="'+user.Id+'">'+(user.Name + ' ' + user.Surname)+'</option>';
+		});
+
+		// return options
+		return options;
 	}
 
 	function reservationIsOverdue(reservation)
@@ -604,9 +898,17 @@
 				{
 					$("#res-number").html(d.data.Bookingnumber);
 
+					var phone = d.data.Customer.Phone.substring(0,5) + '######', email = d.data.Customer.InternalEmail;
+
+					if (d.data.Checkedin && d.data.Checkedout == false)
+					{
+						phone = d.data.Customer.Phone;
+						email = d.data.Customer.Email;
+					}
+
 					$("#res-name").html(d.data.Customer.Name+" "+d.data.Customer.Surname);
-					$("#res-phone").html(d.data.Customer.Phone.substring(0,5) + '######');
-					$("#res-email").html(d.data.Customer.InternalEmail);
+					$("#res-phone").html(phone);
+					$("#res-email").html(email);
 
 					$("#subtotal").html(numFormat(Number(d.data.Total).toFixed(2)));
 					$("#discount").html(numFormat(Number(d.data.Discount).toFixed(2)));
@@ -614,15 +916,15 @@
 					$("#paid").html(d.data.Paid ? numFormat(Number(d.data.Paidamount).toFixed(2)) : "0.00");
 					
 					
-					let roomNum = 0;
+					let roomNum = [];
 					
 					for(let h = 0; h < d.data.Rooms.length; h++)
 					{
-					    roomNum += Number(d.data.Rooms[h].Number);
+					    //roomNum.push(Number(d.data.Rooms[h].Number));
 					}
 
 
-					$("#room-res-count").html(roomNum);
+					$("#room-res-count").html(d.data.Rooms.length);
 
 					$("#res-crested-con").html(d.data.Created.WeekDay+", "+d.data.Created.Day+"/"+
 						d.data.Created.MonthName+"/"+d.data.Created.Year);
@@ -644,6 +946,15 @@
 						$("#pay-status").removeClass("green-back");
 						$("#pay-status").addClass("yellow-back");
 						$("#pay-status").html("Unpaid");
+					}
+
+					if (d.data.Checkedin && d.data.Checkedout)
+					{
+						$("#reserve-status").addClass("checked-out");
+						$("#reserve-status").removeClass("red-back");
+						$("#reserve-status").removeClass("green-back");
+						$("#reserve-status").removeClass("blue-back");
+						$("#reserve-status").html("Checked out");
 					}
 
 					if(d.data.Status == "active")
@@ -688,7 +999,7 @@
 							d.data.Checkoutdate.MonthName+"/"+d.data.Checkoutdate.Year+"</span><br/>" +
 							"<span class='sleak'><span style='color: silver;'>Night(s): </span>"+d.data.Period+"</span><br/>" +
 							"<span class='sleak'><span style='color: silver;'>Guest(s): </span>"+((Number(d.data.Adult) + Number(d.data.Children)))+"</span><br/>" +
-							"<span class='sleak'><span style='color: silver;'>No of rooms: </span>"+Number(d.data.Rooms[i].Number)+"</span>" +
+							"<span class='sleak'><span style='color: silver;'>Room: </span>"+Number(d.data.Rooms[i].Number)+"</span>" +
 							"</div>";
 						getElement("room-reservations-con").appendChild(con);
 					}
@@ -772,6 +1083,7 @@
 
 					$("#inhouse-count").html(d.inhouse);
 					$("#todays-checkin-count").html(d.today);
+					$("#todays-checkout-count").html(d.todayCheckout);
 					$("#overdue-stay").html(d.overdue);
 
 					if(d.data.length === 0)

@@ -528,17 +528,17 @@
             "           <i class='pie chart icon'></i> Reports" +
             "       </div>" +
             "       <a href='#reports' class='item "+(arg == null ? "active" : "")+"'>" +
-            "           Transactions" +
+            "           Revenue" +
             "       </a>" +
-            "       <a href='#reports/finance' class='item "+(arg == "finance" ? "active" : "")+"'>" +
-            "           Financial report" +
-            "       </a>" +
-            "       <a href='#reports/customers' class='item "+(arg == "customers" ? "active" : "")+"'>" +
-            "           Customers" +
-            "       </a>" +
-            "       <a href='#reports/reviews' class='item "+(arg == "reviews" ? "active" : "")+"'>" +
-            "           Reviews" +
-            "       </a>" +
+            // "       <a href='#reports/finance' class='item "+(arg == "finance" ? "active" : "")+"'>" +
+            // "           Financial report" +
+            // "       </a>" +
+            // "       <a href='#reports/customers' class='item "+(arg == "customers" ? "active" : "")+"'>" +
+            // "           Customers" +
+            // "       </a>" +
+            // "       <a href='#reports/reviews' class='item "+(arg == "reviews" ? "active" : "")+"'>" +
+            // "           Reviews" +
+            // "       </a>" +
             "   </div>" +
             "</div>");
 
@@ -547,6 +547,183 @@
             "<div id='menu'></div>" +
             "<div id='page'></div>" +
             "</div>");
+
+        // draw report
+        if (arg == null)
+        {
+            drawReport();
+        }
+    }
+
+    function drawReport()
+	{
+        $("#menu").html(
+            "<div class='w3-col l12 m12 s12 pad-1'>" +
+
+            "<div class='l-pad-2 s-pad-1'>" +
+            "<h3 class='ui header' style='font-family: varela_roundregular; color: dimgray;'>" +
+            "<img src='"+phpvars.CDN_URL+"/images/money.png' style='width: 40px; margin-top: 0px;'> Report Summary" +
+            "</h3>" +
+            "</div>" +
+
+            "<div class='w3-row'>" +
+            "<div class='w3-col l12 m12 s12' style='margin-top: 10px;'>" +
+            "<div class='widget curve wix-textbox l-width-xl m-width-l' style='border: 1px solid rgb(230,230,230);'>" +
+            "<div class='w3-row'>" +
+            "<div class='w3-col l4 m4 s4 pad-1' style='border-right: 1px solid lightgray;'>" +
+            "<h6 style='text-align: center;'><i class='yellow user alternate outline inverted circular icon'></i></h6>" +
+            "</div>" +
+            "<div class='w3-col l8 m8 s8 pad-t' style=''>" +
+            "<h6 id='active-user' class='sleak' style='text-align: right; font-weight: bold; margin-right: 10px;'>General</h6>" +
+            "<h6 class='' style='text-align: right; color: dimgray; font-family: varela_roundregular; margin-right: 10px;'>Revenue report <a href='javascript:void(0)' onclick=\"launchUsers()\" class='switch-user' style='display:none'>switch user?</a>" +
+            "<input type='hidden' id='pos-user' value=''/>"+
+            "</h6>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "<div class='w3-col l12 m12 s12' style='margin-top: 10px;'>" +
+            "<div class='widget curve wix-textbox l-width-xl m-width-l' style='border: 1px solid rgb(230,230,230);'>" +
+            "<div class='w3-row'>" +
+            "<div class='w3-col l4 m4 s4 pad-1' style='border-right: 1px solid lightgray;'>" +
+            "<h6 style='text-align: center;'>" +
+            "<i class='green calendar inverted times outline circular icon'></i>" +
+            "</h6>" +
+            "</div>" +
+            "<div class='w3-col l8 m8 s8 pad-t' style=''>" +
+            "<h6 id='total-income' class='sleak' style='text-align: right; font-weight: bold; margin-right: 10px;'>&#8358;"+numFormat(Number('0').toFixed(2))+"</h6>" +
+            "<h6 class='' style='text-align: right; color: dimgray; font-family: varela_roundregular; margin-right: 10px;'>Total Revenue" +
+            "</h6>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "<div class='w3-col l12 m12 s12' style='margin-top: 10px;'>" +
+            "<div class='widget curve wix-textbox l-width-xl m-width-l' style='border: 1px solid rgb(230,230,230);'>" +
+            "<div class='w3-row'>" +
+            "<div class='w3-col l4 m4 s4 pad-1' style='border-right: 1px solid lightgray;'>" +
+            "<h6 style='text-align: center;'>" +
+            "<i class='red calendar inverted times outline circular icon'></i>" +
+            "</h6>" +
+            "</div>" +
+            "<div class='w3-col l8 m8 s8 pad-t' style=''>" +
+            "<h6 id='total-refunds' class='sleak' style='text-align: right; font-weight: bold; margin-right: 10px;'>&#8358;"+numFormat(Number('0').toFixed(2))+"</h6>" +
+            "<h6 class='' style='text-align: right; color: dimgray; font-family: varela_roundregular; margin-right: 10px;'>Total Refunds" +
+            "</h6>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>");
+
+		$("#page").html(
+			
+			"<div class='l-width-12 w3-col pad-2' id='large-calendar-con'>" +
+			"<div id=''>" +
+
+
+			"<div class='ui pointing menu'>" +
+			"  <a id='all-report' class='active item reserve-tab' onclick='switchReportTab(this)' style='font-family: Nunito;'>" +
+			"     <i class='circle dot blue outline icon'></i> All" +
+			"  </a>" +
+			"  <a id='paid-report' class='item reserve-tab' onclick='switchReportTab(this)' style='font-family: Nunito;'>" +
+			"     <i class='green check circle icon'></i> Income" +
+			"  </a>" +
+			"  <a id='refund-report' class='item reserve-tab' onclick='switchReportTab(this)' style='font-family: Nunito;'>" +
+			"     <i class='red times circle icon'></i> Refunds" +
+			"  </a>" +
+			"    <div class='item'>" +
+			"      <div class='ui input payment-mode-wrapper'>" +
+					drawPaymentMode() +
+			"      </div>" +
+			"    </div>" +
+			"    <div class='item'>" +
+			"      <div class='ui transparent icon input'>" +
+			"        <input id='report-due-date' type='text' data-toggle='datepicker' " +
+			"             placeholder='Date from' onchange='populateReport();'>" +
+			"        <i id='report-cancel-btn' class='blue calendar alternate outline icon' onclick='cancelDate()'></i>" +
+			"      </div>" +
+			"    </div>" +
+			"	<div class='item'>" +
+			"      <div class='ui transparent icon input'>" +
+			"        <input id='report-due-date-range' type='text' data-toggle='datepicker' " +
+			"             placeholder='Date to' onchange='populateReport();'>" +
+			"        <i id='report-cancel-btn' class='blue calendar alternate outline icon' onclick='cancelDate()'></i>" +
+			"      </div>" +
+			"    </div>" +
+			"  <div class='right menu'>" +
+			"    <div class='item'>" +
+			"      <div class='ui transparent icon input'>" +
+			"        <input id='search-txt' type='text' placeholder='Search...' " +
+			"         onkeyup='if(event.keyCode == 13){populateReport();}'/>" +
+			"        <i class='search link icon' onclick=\"populateReport()\"></i>" +
+			"      </div>" +
+			"    </div>" +
+			"  </div>" +
+			"</div>" +
+
+			DrawTable(["Customer", "Total", "User", "Payment Mode", "Date", "Account", "Remark"],
+				{
+					Celled: true, Padded: true, GroupAction: [{ Text: "Export CSV", Method: "exportReportCSV" }]
+				}).outerHTML +
+
+			"</div>" +
+			"</div>"
+		);
+
+		$(".ui.dropdown").dropdown();
+		$("#payment-mode").dropdown();
+
+		new Lightpick({
+			field: document.getElementById('report-due-date'),
+			singleDate: true,
+			inline:false,
+			format:"MM/DD/YY",
+			numberOfColumns:1,
+			numberOfMonths:1,
+			onSelect: function(date){
+				populateReport();
+			}
+		});
+
+		new Lightpick({
+			field: document.getElementById('report-due-date-range'),
+			singleDate: true,
+			inline:false,
+			format:"MM/DD/YY",
+			numberOfColumns:1,
+			numberOfMonths:1,
+			onSelect: function(date){
+				populateReport();
+			}
+		});
+
+		populateReport();
+    }
+    
+    function drawPaymentMode()
+	{
+		return '<select id="payment-mode" style="border:none" onchange="populateReport()">\
+		<option value=""> Select payment mode </option>\
+		<option value="pos">Card (POS)</option>\
+		<option value="cash">Cash</option>\
+		<option value="online">Online</option>\
+		<option value="transfer">Transfer/Deposit</option>\
+		<option value="other">Other</option>\
+		<option value="all">All</option>\
+		</select>'
+    }
+    
+    function switchReportTab(e)
+	{
+		$(".reserve-tab").removeClass("active");
+		$(e).addClass("active");
+		//$("#reservation-due-date").val("");
+		$("#search-txt").val("");
+		// uncheck main sel
+		document.querySelector('#main-sel').checked = false;
+		populateReport();
     }
 
     function DrawPropertySettings()
@@ -1004,6 +1181,10 @@
         property.nearby_attractions = getAllAttractions();
         property.extra_child_fee = $('#extra-child-amount').val();
         property.payment_methods = getPaymentMethods();
+        property.checkin_start = $('#checkin_start').val();
+        property.checkin_end = $('#checkin_end').val();
+        property.checkout_start = $('#checkout_start').val();
+        property.checkout_end = $('#checkout_end').val();
 
         // can continue ??
         var continueProcess = true;
@@ -1014,8 +1195,8 @@
             name : 'Enter property name',
             description : 'Enter property description',
             country : 'Enter property country',
-            city : 'Enter property city',
-            cityname : 'Enter property city',
+            // city : 'Enter property city',
+            // cityname : 'Enter property city',
             state : 'Enter property state',
             statename : 'Enter property state',
             phone1 : 'Enter property contact phone',

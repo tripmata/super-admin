@@ -97,7 +97,7 @@ use function Lightroom\Common\Functions\csrf;
                         </div>
                     </div>
                 </a>
-                <!-- <a href="#reports">
+                <a href="#reports">
                     <div class="property-menu pad-1">
                         <div class="align-c pad-1">
                             <h4>
@@ -105,7 +105,7 @@ use function Lightroom\Common\Functions\csrf;
                             </h4>
                         </div>
                     </div>
-                </a> -->
+                </a>
                 <a href="#settings">
                     <div class="property-menu pad-1">
                         <div class="align-c pad-1">

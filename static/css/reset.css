@@ -92,10 +92,12 @@
 
 .image-wrapper{
     display: flex;
+    height: 130px;
 }
 
 .image-wrapper img{
     flex: 1;
+    object-fit: cover;
 }
 
 *[data-href]:hover{
@@ -719,4 +721,21 @@ label[for='update-picture']:hover{
     .staff-list-container .w3-main{
         width: 100%;
     }
+}
+
+.switch-user{
+    color: #e6ac06;
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+#active-user{
+    text-transform: capitalize;
+}
+
+.checked-out{
+    border: 1px solid #e4e4e4 !important;
+    color: rgb(196, 195, 195);
+    padding-left: 10px !important;
+    padding-right: 10px !important;
 }

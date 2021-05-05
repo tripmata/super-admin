@@ -114,7 +114,7 @@
         $("#page-1").html(
             "           <div id='page-top-1' class='w3-row' style='border-bottom: 1px solid rgb(230,230,230);'>" +
             "                <div class='w3-col l6 m6 s12 pad-1'>" +
-            "                   <a href='"+phpvars.TRIP_MATA_URL+"/listing' target='_blank' onclick='return showIframe(event)'>" +
+            "                   <a href='"+phpvars.TRIP_MATA_URL+"/listing'>" +
             "                       <button class='ui compact blue button' style='font-family: quicksandregular; cursor: pointer;'>" +
             "                           <i class='plus icon'></i> List a property / vehicle" +
             "                       </button>" +
@@ -625,7 +625,7 @@
                         for(let i = 0; i < d.data.length; i++)
                         {
                             let row = document.createElement("tr");
-                            row.setAttribute('data-href', (d.data[i].Approved ? 'property/'+d.data[i].Id : ''));
+                            row.setAttribute('data-href', 'property/'+d.data[i].Id);
 
                             let td1 = document.createElement("td");
                             td1.className = 'image-wrapper';

@@ -20248,7 +20248,7 @@ function managePropertyFacility(data)
 	});
 
 	// load facilities
-	const _facilities = data.FacilitiesJson;
+	let _facilities = data.FacilitiesJson;
 
 	// populate
 	_facilities.forEach((facilityData)=>{

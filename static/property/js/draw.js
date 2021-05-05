@@ -1635,79 +1635,79 @@
 
 
         _page({add:div({add:
-                    "<div class='w3-col l4 m4 s12'>" +
-                    "<div class=''>" +
+            "<div class='w3-col l4 m4 s12'>" +
+            "<div class=''>" +
 
 
-                    "<div>" +
-                    "<h3 id='res-name' class='sleak load-slip' style='margin: 0px; margin-top: 10px;'>Name</h3>" +
-                    "<small class='load-slip'><span id='res-number'>Booking</span></small>" +
-                    "</div>" +
+            "<div>" +
+            "<h3 id='res-name' class='sleak load-slip' style='margin: 0px; margin-top: 10px;'>Name</h3>" +
+            "<small class='load-slip'><span id='res-number'>Booking</span></small>" +
+            "</div>" +
 
-                    "<div class='pad-1 widget w3-card curve' style='margin-top: 10px;'>" +
-                    "<a id='see-profile-con' style='float: right; margin-top: 10px;' href=''></a>" +
-                    "<h6 class='sleak load-slip' style='font-weight: bold; color: steelblue;'>Contact Into</h6><br/>" +
-                    "<h6 class='load-slip' style='color: dimgray; font-size: 14px;'>" +
-                    "<i class='mobile icon'></i> <span id='res-phone'>phone</span>" +
-                    "</h6>" +
-                    "<h6 class='load-slip' style='color: dimgray; font-size: 14px;'>" +
-                    "<i class='at icon'></i> <span id='res-email'>email</span>" +
-                    "</h6>" +
-                    "</div>" +
+            "<div class='pad-1 widget w3-card curve' style='margin-top: 10px;'>" +
+            "<a id='see-profile-con' style='float: right; margin-top: 10px;' href=''></a>" +
+            "<h6 class='sleak load-slip' style='font-weight: bold; color: steelblue;'>Contact Into</h6><br/>" +
+            "<h6 class='load-slip' style='color: dimgray; font-size: 14px;'>" +
+            "<i class='mobile icon'></i> <span id='res-phone'>phone</span>" +
+            "</h6>" +
+            "<h6 class='load-slip' style='color: dimgray; font-size: 14px;'>" +
+            "<i class='at icon'></i> <span id='res-email'>email</span>" +
+            "</h6>" +
+            "</div>" +
 
-                    "<div class='pad-1 widget w3-card curve' style='margin-top: 10px;'>" +
-                    "<span id='pay-status' class='status load-slip'>Status</span>" +
-                    "<h6 class='sleak load-slip' style='font-weight: bold; color: steelblue;'>" +
-                    "Payment info </h6><br/>" +
-                    "<table class='ui very basic no-line table'>" +
-                    "<tr>" +
-                    "<th><span class='load-slip'>Subtotal</span></th>" +
-                    "<td><span class='load-slip'>"+$("#currency-symbol").val()+" <span id='subtotal'>0</span></span></td>" +
-                    "</tr>" +
-                    "<tr>" +
-                    "<th><span class='load-slip'>Discount</span></th>" +
-                    "<td><span class='load-slip'>"+$("#currency-symbol").val()+" <span id='discount'>0</span></span></td>" +
-                    "</tr>" +
-                    "<tr>" +
-                    "<th><span class='load-slip'>Total</span></th>" +
-                    "<td><span class='load-slip'>"+$("#currency-symbol").val()+" <span id='total'>0</span></span></td>" +
-                    "</tr>" +
-                    "<tr>" +
-                    "<th><span class='load-slip'>Paid</span></th>" +
-                    "<td><span class='load-slip'>"+$("#currency-symbol").val()+" <span id='paid'>0</span></span></td>" +
-                    "</tr>" +
-                    "</table>" +
-                    "</div>" +
+            "<div class='pad-1 widget w3-card curve' style='margin-top: 10px;'>" +
+            "<span id='pay-status' class='status load-slip'>Status</span>" +
+            "<h6 class='sleak load-slip' style='font-weight: bold; color: steelblue;'>" +
+            "Payment info </h6><br/>" +
+            "<table class='ui very basic no-line table'>" +
+            "<tr>" +
+            "<th><span class='load-slip'>Subtotal</span></th>" +
+            "<td><span class='load-slip'>"+$("#currency-symbol").val()+" <span id='subtotal'>0</span></span></td>" +
+            "</tr>" +
+            "<tr>" +
+            "<th><span class='load-slip'>Discount</span></th>" +
+            "<td><span class='load-slip'>"+$("#currency-symbol").val()+" <span id='discount'>0</span></span></td>" +
+            "</tr>" +
+            "<tr>" +
+            "<th><span class='load-slip'>Total</span></th>" +
+            "<td><span class='load-slip'>"+$("#currency-symbol").val()+" <span id='total'>0</span></span></td>" +
+            "</tr>" +
+            "<tr>" +
+            "<th><span class='load-slip'>Paid</span></th>" +
+            "<td><span class='load-slip'>"+$("#currency-symbol").val()+" <span id='paid'>0</span></span></td>" +
+            "</tr>" +
+            "</table>" +
+            "</div>" +
 
-                    "<div class='pad-1 widget w3-card curve' style='margin-top: 10px;'>" +
-                    "<h6 class='sleak load-slip' style='font-weight: bold; color: steelblue;'>Special request</h6><br/>" +
-                    "<div id='special-req'></div>" +
-                    "</div>" +
+            "<div class='pad-1 widget w3-card curve' style='margin-top: 10px;'>" +
+            "<h6 class='sleak load-slip' style='font-weight: bold; color: steelblue;'>Special request</h6><br/>" +
+            "<div id='special-req'></div>" +
+            "</div>" +
 
-                    "</div>" +
-                    "</div>" +
+            "</div>" +
+            "</div>" +
 
 
-                    "<div class='w3-col l8 m8 s12'>" +
-                    "<div class='l-width-8' style='margin: auto;'>" +
-                    "<div>" +
-                    "<h6 id='reserve-status' class='status load-slip' style='float: right;'>Status</h6>" +
-                    "<h4 class='sleak load-slip' style='margin: 0px; margin-top: 10px;'>Reservation details</h4>" +
-                    "<small class='load-slip'>Created: <span id='res-crested-con'></span></small>" +
-                    "</div>" +
+            "<div class='w3-col l8 m8 s12'>" +
+            "<div class='l-width-8' style='margin: auto;'>" +
+            "<div>" +
+            "<h6 id='reserve-status' class='status load-slip' style='float: right;'>Status</h6>" +
+            "<h4 class='sleak load-slip' style='margin: 0px; margin-top: 10px;'>Reservation details</h4>" +
+            "<small class='load-slip'>Created: <span id='res-crested-con'></span></small>" +
+            "</div>" +
 
-                    "<div class='widget curve w3-card' style='margin-top: 20px;'>" +
-                    "<div class='pad-t' style='background-color: rgb(250,250,250); border-radius: 4px 4px 0px 0px;'>" +
-                    "<h6 class='sleak load-slip' style='font-weight: bold; margin-left: 10px; font-size: 14px;'>" +
-                    "Rooms <span id='room-res-count' style='float: right; margin-right: 10px;'>0</span>" +
-                    "</h6>" +
-                    "</div>" +
-                    "<div id='room-reservations-con'></div>" +
-                    "</div>" +
+            "<div class='widget curve w3-card' style='margin-top: 20px;'>" +
+            "<div class='pad-t' style='background-color: rgb(250,250,250); border-radius: 4px 4px 0px 0px;'>" +
+            "<h6 class='sleak load-slip' style='font-weight: bold; margin-left: 10px; font-size: 14px;'>" +
+            "Rooms <span id='room-res-count' style='float: right; margin-right: 10px;'>0</span>" +
+            "</h6>" +
+            "</div>" +
+            "<div id='room-reservations-con'></div>" +
+            "</div>" +
 
-                    "</div>" +
-                    "</div>",
-                class:"w3-row l-pad-7 m-pad-1 s-pad-1"})});
+            "</div>" +
+            "</div>",
+        class:"w3-row l-pad-7 m-pad-1 s-pad-1"})});
 
         populateReservation();
     }
@@ -1715,7 +1715,7 @@
     function DrawLoging()
     {
         $("#menu").html(
-                "<div class='w3-row'>" +
+            "<div class='w3-row'>" +
 
             "<div class='l-pad-2 s-pad-1'>" +
             "<h3 class='ui header' style='font-family: varela_roundregular; color: dimgray;'>" +
@@ -1723,68 +1723,67 @@
             "</h3>" +
             "</div>" +
 
-
-                "<div class='w3-col l12 m12 s12 pad-1'>" +
-                "<div class='w3-row'>" +
-                "<div class='w3-col l12 m12 s12' style='margin-top: 10px;'>" +
-                "<div class='widget curve wix-textbox l-width-xl m-width-l' style='border: 1px solid rgb(230,230,230);'>" +
-                "<div class='w3-row'>" +
-                "<div class='w3-col l4 m4 s4 pad-1' style='border-right: 1px solid lightgray;'>" +
-                "<h6 style='text-align: center;'><i class='green bed inverted circular icon'></i></h6>" +
-                "</div>" +
-                "<div class='w3-col l8 m8 s8 pad-t' style=''>" +
-                "<h6 id='inhouse-count' class='sleak' style='text-align: right; font-weight: bold; margin-right: 10px;'>0</h6>" +
-                "<h6 style='text-align: right; font-family: varela_roundregular; color: dimgray; margin-right: 10px;'>In house guests" +
-                "</h6>" +
-                "</div>" +
-                "</div>" +
-                "</div>" +
-                "</div>" +
-                "<div class='w3-col l12 m12 s12' style='margin-top: 10px;'>" +
-                "<div class='widget curve wix-textbox l-width-xl m-width-l' style='border: 1px solid rgb(230,230,230);'>" +
-                "<div class='w3-row'>" +
-                "<div class='w3-col l4 m4 s4 pad-1' style='border-right: 1px solid lightgray;'>" +
-                "<h6 style='text-align: center;'><i class='blue calendar inverted alternate outline circular icon'></i></h6>" +
-                "</div>" +
-                "<div class='w3-col l8 m8 s8 pad-t' style=''>" +
-                "<h6 id='todays-checkin-count' class='sleak' style='text-align: right; font-weight: bold; margin-right: 10px;'>0</h6>" +
-                "<h6 style='text-align: right; font-family: varela_roundregular; color: dimgray; margin-right: 10px;'>Today's check-ins" +
-                "</h6>" +
-                "</div>" +
-                "</div>" +
-                "</div>" +
-                "</div>" +
-                "<div class='w3-col l12 m12 s12' style='margin-top: 10px;'>" +
-                "<div class='widget curve wix-textbox l-width-xl m-width-l' style='border: 1px solid rgb(230,230,230);'>" +
-                "<div class='w3-row'>" +
-                "<div class='w3-col l4 m4 s4 pad-1' style='border-right: 1px solid lightgray;'>" +
-                "<h6 style='text-align: center;'><i class='red calendar inverted alternate outline circular icon'></i></h6>" +
-                "</div>" +
-                "<div class='w3-col l8 m8 s8 pad-t' style=''>" +
-                "<h6 id='todays-checkin-count' class='sleak' style='text-align: right; font-weight: bold; margin-right: 10px;'>0</h6>" +
-                "<h6 style='text-align: right; font-family: varela_roundregular; color: dimgray; margin-right: 10px;'>Today's check-outs" +
-                "</h6>" +
-                "</div>" +
-                "</div>" +
-                "</div>" +
-                "</div>" +
-                "<div class='w3-col l12 m12 s12' style='margin-top: 10px;'>" +
-                "<div class='widget curve wix-textbox l-width-xl m-width-l' style='border: 1px solid rgb(230,230,230);'>" +
-                "<div class='w3-row'>" +
-                "<div class='w3-col l4 m4 s4 pad-1' style='border-right: 1px solid lightgray;'>" +
-                "<h6 style='text-align: center;'><i class='yellow bed inverted circular icon'></i></h6>" +
-                "</div>" +
-                "<div class='w3-col l8 m8 s8 pad-t' style=''>" +
-                "<h6 id='overdue-stay' class='sleak' style='text-align: right; font-weight: bold; margin-right: 10px;'>0</h6>" +
-                "<h6 style='text-align: right; font-family: varela_roundregular; color: dimgray; margin-right: 10px;'>Overdue" +
-                "</h6>" +
-                "</div>" +
-                "</div>" +
-                "</div>" +
-                "</div>" +
-                "</div>" +
-                "</div>" +
-                "</div>");
+            "<div class='w3-col l12 m12 s12 pad-1'>" +
+            "<div class='w3-row'>" +
+            "<div class='w3-col l12 m12 s12' style='margin-top: 10px;'>" +
+            "<div class='widget curve wix-textbox l-width-xl m-width-l' style='border: 1px solid rgb(230,230,230);'>" +
+            "<div class='w3-row'>" +
+            "<div class='w3-col l4 m4 s4 pad-1' style='border-right: 1px solid lightgray;'>" +
+            "<h6 style='text-align: center;'><i class='green bed inverted circular icon'></i></h6>" +
+            "</div>" +
+            "<div class='w3-col l8 m8 s8 pad-t' style=''>" +
+            "<h6 id='inhouse-count' class='sleak' style='text-align: right; font-weight: bold; margin-right: 10px;'>0</h6>" +
+            "<h6 style='text-align: right; font-family: varela_roundregular; color: dimgray; margin-right: 10px;'>In house guests" +
+            "</h6>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "<div class='w3-col l12 m12 s12' style='margin-top: 10px;'>" +
+            "<div class='widget curve wix-textbox l-width-xl m-width-l' style='border: 1px solid rgb(230,230,230);'>" +
+            "<div class='w3-row'>" +
+            "<div class='w3-col l4 m4 s4 pad-1' style='border-right: 1px solid lightgray;'>" +
+            "<h6 style='text-align: center;'><i class='blue calendar inverted alternate outline circular icon'></i></h6>" +
+            "</div>" +
+            "<div class='w3-col l8 m8 s8 pad-t' style=''>" +
+            "<h6 id='todays-checkin-count' class='sleak' style='text-align: right; font-weight: bold; margin-right: 10px;'>0</h6>" +
+            "<h6 style='text-align: right; font-family: varela_roundregular; color: dimgray; margin-right: 10px;'>Today's check-ins" +
+            "</h6>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "<div class='w3-col l12 m12 s12' style='margin-top: 10px;'>" +
+            "<div class='widget curve wix-textbox l-width-xl m-width-l' style='border: 1px solid rgb(230,230,230);'>" +
+            "<div class='w3-row'>" +
+            "<div class='w3-col l4 m4 s4 pad-1' style='border-right: 1px solid lightgray;'>" +
+            "<h6 style='text-align: center;'><i class='red calendar inverted alternate outline circular icon'></i></h6>" +
+            "</div>" +
+            "<div class='w3-col l8 m8 s8 pad-t' style=''>" +
+            "<h6 id='todays-checkout-count' class='sleak' style='text-align: right; font-weight: bold; margin-right: 10px;'>0</h6>" +
+            "<h6 style='text-align: right; font-family: varela_roundregular; color: dimgray; margin-right: 10px;'>Today's check-outs" +
+            "</h6>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "<div class='w3-col l12 m12 s12' style='margin-top: 10px;'>" +
+            "<div class='widget curve wix-textbox l-width-xl m-width-l' style='border: 1px solid rgb(230,230,230);'>" +
+            "<div class='w3-row'>" +
+            "<div class='w3-col l4 m4 s4 pad-1' style='border-right: 1px solid lightgray;'>" +
+            "<h6 style='text-align: center;'><i class='yellow bed inverted circular icon'></i></h6>" +
+            "</div>" +
+            "<div class='w3-col l8 m8 s8 pad-t' style=''>" +
+            "<h6 id='overdue-stay' class='sleak' style='text-align: right; font-weight: bold; margin-right: 10px;'>0</h6>" +
+            "<h6 style='text-align: right; font-family: varela_roundregular; color: dimgray; margin-right: 10px;'>Overdue" +
+            "</h6>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            "</div>");
 
         _page({add:"<div class='ui pointing menu'>" +
                 "  <a id='all-guest-tab' class='active item guest-tab' onclick=\"switchGuestTab(this)\">" +
@@ -3027,7 +3026,7 @@
     function drawPropertyRules(id, property)
     {
         $(id).html(
-            "                       <div class='w3-row' style='margin-top: 20px;'>" +
+            "                       <div class='w3-row' style='margin-top: 20px; display:none;'>" +
             "                           <div class='w3-col l6 m6 s12'>" +
             "                               <div class='l-width-9'>" +
             "                                   <h6 class='sleak'>Check in time</h6>" +
@@ -3048,6 +3047,32 @@
             "                           </div>" +
             "                       </div>" +
             "                       <div style='margin-top: 10px;'><br/> " +
+
+            "                       <div class='widget pad-1' style='border: 3px solid rgb(245,245,245);'>" +
+            "                           <span style='font-weight: bold;'>Check in time</span><br/><br/>" +
+            "                           <p style='color: dimgray; font-family: Lato; line-height: 180%;'>" +
+            "                               Please specify the check in time for this property. eg. from 12:00 to 1:00." +
+            "                           </p><br/>" +
+            "                           <div class='ui left labeled small fluid input'>" +
+            "                               <label class='ui label'>from</label>" +
+            "                               <input id='checkin_start' class='wix-textbox' type='time' value='"+property.checkin_start+"' style='border-radius: 0px;'/>" +
+            "                               <label class='ui label' style='border-radius: 0px;'>to</label>" +
+            "                               <input id='checkin_end' class='wix-textbox' type='time' value='"+property.checkin_end+"' style='border-radius: 0px 4px 4px 0px;'/>" +
+            "                           </div></div>" +
+            "                       </div>" +
+
+            "                       <div class='widget pad-1' style='border: 3px solid rgb(245,245,245);'>" +
+            "                           <span style='font-weight: bold;'>Check out time</span><br/><br/>" +
+            "                           <p style='color: dimgray; font-family: Lato; line-height: 180%;'>" +
+            "                               Please specify the check out time for this property. eg. from 04:30 to 6:00." +
+            "                           </p><br/>" +
+            "                           <div class='ui left labeled small fluid input'>" +
+            "                               <label class='ui label'>from</label>" +
+            "                               <input id='checkout_start' class='wix-textbox' type='time' value='"+property.checkout_start+"' style='border-radius: 0px;'/>" +
+            "                               <label class='ui label' style='border-radius: 0px;'>to</label>" +
+            "                               <input id='checkout_end' class='wix-textbox' type='time' value='"+property.checkout_end+"' style='border-radius: 0px 4px 4px 0px;'/>" +
+            "                           </div></div>" +
+            "                       </div>" +
 
 
             "                       <div class='widget pad-1' style='border: 3px solid rgb(245,245,245);'>" +
@@ -3100,7 +3125,7 @@
             "                           <label><input id='cancellation' type='checkbox' "+(property.cancellation ? "checked" : "")+" data-show='cancellation'/><span style='font-weight: bold;'>" +
             "                               Booking Cancellation" +
             "                           </span></label><br/><br/><div data-show-at='cancellation'>" +
-            "                           <span>Cancellation period</span><br/>" +
+            "                           <span>Cancellation period before arrival.</span><br/>" +
             "                           <div class='ui left labeled small fluid input'>" +
             "                               <label class='ui label'>days</label>" +
             "                               <input id='cancel-days' class='wix-textbox' type='text' value='"+property.canceldays+"' style='border-radius: 0px;'/>" +
@@ -3183,7 +3208,7 @@
             "                           <p style='color: dimgray; font-family: Lato; line-height: 180%;'>" +
             "                               Here you can specify a time window and a fee to charge checked in guests for any late checkout."+
             "                           </p>" +
-            "                           <div class='checkout-rule-form'><input type='text' data-make-time='yes' id='checkout-rule-from' placeholder='Time from'/> <input type='text' data-make-time='yes' id='checkout-rule-to' placeholder='Time to'/> <input type='tel' id='checkout-rule-amount' placeholder='Amount/Fee'/> <button type='button' id='checkout-rule-btn'><i class='add icon'></i></button></div>"+
+            "                           <div class='checkout-rule-form'><input type='text' data-make-time='yes' id='checkout-rule-from' placeholder='Time from'/> <input type='text' data-make-time='yes' id='checkout-rule-to' placeholder='Time to'/> <input type='tel' id='checkout-rule-amount' placeholder='0%'/> <button type='button' id='checkout-rule-btn'><i class='add icon'></i></button></div>"+
             "                           <div class='checkout-rule-body'></div>"+
             "                       </div>" +
 
@@ -3279,14 +3304,20 @@
         let space = document.createElement("div");
         space.className = 'checkbox';
         space.setAttribute('data-facility', facility);
+        let idName = facility.replace(/[\s]+/g, '-');
         space.innerHTML =
-            "<label><input class='v-feature' id='"+facility+"' type='checkbox'><span>"+facility+"</span></label>";
-        
+            "<label><input class='v-feature' id='"+idName+"' type='checkbox'><span>"+facility+"</span></label>";
+
         // append property
-        document.getElementById("property-facilities").appendChild(space);
+        let pf = document.getElementById("property-facilities")
+
+        // are we good ?
+        if (pf != null) pf.appendChild(space);
 
         // check now
-        document.querySelector('#'+facility).checked = checked;
+        let idElement = document.querySelector('#'+idName);
+
+        if (idElement !== null) idElement.checked = checked;
 
     }
 

@@ -46,7 +46,7 @@ if (preg_match('/(localhost)(:[0-9]+)/', $host)) :
     $set->CDN_URL = 'http://localhost:8888/tripmata-suites/Storage/client/';
     $set->FRONTDESK_CDN = 'http://localhost:8888/tripmata-suites/Storage/frontdesk/';
     $set->FILES_CDN = 'http://localhost:8888/tripmata-suites/Storage/files/';
-    $set->TRIP_MATA_URL = 'http://localhost:8888/tripmata/';
+    $set->TRIP_MATA_URL = 'http://localhost:8888/tripmata-suites/ClientArea/';
     $set->REDIRECT_TO = 'http://localhost:8888/tripmata-suites/ListingArea/';
     $set->FRONTDESK_URL = 'http://localhost:8888/tripmata-suites/FrontDeskArea/';
     $set->LISTING_SERVICE_API = 'http://localhost:8888/tripmata-suites/ListingServices/';
