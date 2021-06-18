@@ -4291,6 +4291,7 @@ function  saveRoomCategory()
 		showpromo:getElement("show-promo-text").checked,
 		showonsite:getElement("show-on-site").checked,
 		reservable:getElement("reservable").checked,
+		hall:getElement("hall_type").checked,
 		services:$("#special-services").val(),
 		promotext:$("#room-promo-text").val(),
 		sort:$("#room-cat-sort").val(),
@@ -4368,6 +4369,7 @@ function  saveRoomCategory()
 					getElement("show-promo-text").checked = false;
 					getElement("show-on-site").checked = true;
 					getElement("reservable").checked = true;
+					getElement("hall_type").checked = false;
 					$("#room-promo-text").val("");
 					$("#room-cat-sort").val(0);
 
@@ -4423,6 +4425,7 @@ function loadEditRoomCatData(e)
 				getElement("show-promo-text").checked = d.data.Showpromotion;
 				getElement("show-on-site").checked = d.data.Onsite;
 				getElement("reservable").checked = d.data.Reservable;
+				getElement("hall_type").checked = d.data.HallType;
 				$("#special-services").val(d.data.Services);
 				$("#room-promo-text").val(d.data.Promotext);
 				$("#room-cat-sort").val(d.data.Sort);

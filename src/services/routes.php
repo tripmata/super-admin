@@ -67,7 +67,6 @@ Route::get('account', function(){
 
     // redirect to trip mata main site
     func()->redirect(TRIP_MATA_URL . '/account');
-
 });
 
 // store token
@@ -76,4 +75,37 @@ Route::post('store-token', function(){
     // store session token
     $_SESSION['user_token'] = post()->get('token');
     $_SESSION['customer_res'] = post()->get('token');
+});
+
+// make route request for module
+Route::any('module-{name}/{id}', function($name, $id){
+    
+    // check property id
+    if (isset($_SESSION['property']) && $_SESSION['property'] == $id) :
+
+        // get the module name
+        $moduleName = filter_var($name, FILTER_SANITIZE_STRING);
+
+        // check for module
+        if (is_dir(HOME . '/modules/' . $moduleName)) :
+
+            // load the index file
+            $entryFile = HOME . '/modules/' . $moduleName . '/index.php';
+
+            // define root directory
+            if (!defined('MODULE_ROOT')) define('MODULE_ROOT', HOME . '/modules/' . $moduleName . '/');
+
+            // define the module id
+            if (!defined('MODULE_ID')) define('MODULE_ID', $id);
+
+            // does file exists
+            if (file_exists($entryFile)) include_once $entryFile; 
+
+        endif;
+        
+
+    endif;
+
+    // noting to render
+    return '';
 });

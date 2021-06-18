@@ -7,5 +7,6 @@
     ".\/.\/\/package\/TripMata\/===NameValuePair.php": ".\/.\/\/package\/TripMata\/\/NameValuePair.php",
     ".\/.\/\/package\/TripMata\/===Response.php": ".\/.\/\/package\/TripMata\/\/Response.php",
     ".\/.\/\/package\/TripMata\/===IResponse.php": ".\/.\/\/package\/TripMata\/\/IResponse.php",
-    ".\/.\/\/package\/TripMata\/===IBase.php": ".\/.\/\/package\/TripMata\/\/IBase.php"
+    ".\/.\/\/package\/TripMata\/===IBase.php": ".\/.\/\/package\/TripMata\/\/IBase.php",
+    ".\/.\/.\/src\/lab\/library\/===Http.php": ".\/.\/.\/src\/lab\/library\/\/HttpClient\/Http.php"
 }

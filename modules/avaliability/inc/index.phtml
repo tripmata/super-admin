@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <title>Tripmata Avaliability</title>
+        <link rel="stylesheet" type="text/css" href="<?=func()->url().MODULE_ROOT?>inc/assets/lightpick.css"/>
+        <link rel="stylesheet" type="text/css" href="<?=func()->url().MODULE_ROOT?>inc/assets/main.css"/>
+    </head>
+
+    <body>
+        <div class="rows">
+            <div class="row">
+                <!-- show calendar -->
+                <div class="calendar-group">
+
+                    <!-- load calendar -->
+                    <div class="month-calendar">
+
+                        <?php 
+                            // get all placeholders
+                            $placeholder = $this->getTablePlaceholder();
+                            
+                            // get all rooms
+                            $rooms = $placeholder['rooms'];
+                        ?>
+
+                        <div class="non-scrollable">
+                            <table>
+                                <thead>
+                                    <!-- range selector -->
+                                    <th>
+                                        <label for="date-field">
+                                            <label for="date" class="label">Date: <span id="date-txt"><?=date('jS M Y')?></span></label>
+                                            <input type='text' id="calendar-span" id="date-field" placeholder="Change Date">
+                                        </label>
+                                    </th>
+                                </thead>
+
+                                <tbody>
+                                    <?php foreach ($rooms as $roomData) : ?>
+                                        <tr class="category-row max-table-height">
+                                            <td class="category-name">
+                                                <span class="description">Room Category</span>
+                                                <h3 class="bold-text"><?=ucfirst(str_replace('_', ' ', $roomData->name))?></h3>
+                                                <!-- <a href="">bulk edit</a> -->
+                                            </td>
+                                        </tr>
+                                        <?php foreach ($placeholder['categories'] as $category => $categoryType) : ?>
+                                        <tr>
+                                            <td class="small-text"><?=ucwords($category)?></td>
+                                        </tr>
+                                        <?php endforeach; ?>
+
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="scrollable">
+
+                            <!-- get month name -->
+                            <?php $month = date('M', strtotime($this->DefaultMonth . '/1/' . $this->DefaultYear)); ?>
+
+                            <!-- get total days in this month -->
+                            <?php $daysInThisMonth = intval(date('t', strtotime($this->DefaultMonth . '/1/' . $this->DefaultYear))); ?>
+
+                            <!-- Get calendar day for month  -->
+                            <?php $dayStart = $this->DefaultDay; ?>
+
+                            <!-- begining of the month -->
+                            <?php if ($dayStart == 1) : ?>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                    <?php for ($day = $dayStart; $day <= $daysInThisMonth; $day++) : ?>
+                                        <th>
+                                        <span><?=$month?></span>
+                                        <h2><?=$day?></h2>
+                                        <small><?=date('D', strtotime($this->DefaultMonth . '/' . $day . '/' . $this->DefaultYear))?></small>
+                                        </th> 
+                                    <?php endfor; ?>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    <?php foreach ($rooms as $roomData) : ?>
+                                        <tr class="category-row empty-cells max-table-height">
+                                            <td colspan="<?=($daysInThisMonth - $dayStart)?>">
+                                            </td>
+                                        </tr>
+                                        <?php $roomId = $roomData->roomcategoryid; ?>
+                                        <?php foreach ($placeholder['categories'] as $category => $categoryType) : ?>
+                                        <tr class="not-empty-cells">
+                                            <?php for ($day = $dayStart; $day <= $daysInThisMonth; $day++) : ?>
+                                                <?php $timeStamp = $this->generateTimeStamp($day, $this->getDefaultTimeStamp()); ?>
+                                                <td class="row-<?=$categoryType?>" data-category="<?=$category?>" data-roomid="<?=$roomId?>" data-timestamp="<?=$timeStamp?>"><?=$this->generateDisplay($categoryType, $category, $roomData, $timeStamp)?></td>
+                                            <?php endfor; ?>
+                                        </tr>
+                                        <?php endforeach; ?>
+
+                                    <?php endforeach; ?>
+
+                                    
+                                </tbody>
+                            </table>
+                            <?php else: ?>
+
+                                <?php 
+
+                                    // current month and next month.
+                                    $months = [strtotime(date('m/d/Y', strtotime($this->DefaultMonth . '/1/' . $this->DefaultYear)))];
+                                    $months[] = strtotime(date('m/d/Y', strtotime($this->DefaultMonth . '/1/' . $this->DefaultYear . ' + 1 month')));
+
+                                    // get day end for the preceeding month
+                                    $days = [
+                                        'start' => [
+                                            $dayStart,
+                                            1
+                                        ],
+
+                                        'end' => [
+                                            $daysInThisMonth,
+                                            ($dayStart <= date('t', $months[1]) ? $dayStart : date('t', $months[1]))
+                                        ]
+                                    ];
+
+                                    // lets work with the month timestamp
+                                    foreach ($months as $index => $monthDateTimeStamp) :
+
+                                        $dayStartIndex = $days['start'][$index];
+                                        $dayEndIndex = $days['end'][$index];
+                                ?>
+                                <table>
+
+                                    <?php 
+                                        $month = date('m', $monthDateTimeStamp);
+                                        $year = date('Y', $monthDateTimeStamp);
+                                    ?>
+
+                                    <thead>
+                                        <tr>
+                                            <?php for ($day = $dayStartIndex; $day <= $dayEndIndex; $day++) : ?>
+                                                <th>
+                                                <span><?=date('M', $monthDateTimeStamp)?></span>
+                                                <h2><?=$day?></h2>
+                                                <small><?=date('D', strtotime($month . '/' . $day . '/' . $year))?></small>
+                                                </th> 
+                                            <?php endfor; ?>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        
+                                        <?php foreach ($rooms as $roomData) : ?>
+                                            <tr class="category-row empty-cells max-table-height">
+                                                <td colspan="<?=($daysInThisMonth - $dayStart)?>">
+                                                </td>
+                                            </tr>
+                                            <?php $roomId = $roomData->roomcategoryid; ?>
+                                            <?php foreach ($placeholder['categories'] as $category => $categoryType) : ?>
+                                            <tr class="not-empty-cells">
+                                                <?php for ($day = $dayStartIndex; $day <= $dayEndIndex; $day++) : ?>
+                                                    <?php $timeStamp = $this->generateTimeStamp($day, $monthDateTimeStamp); ?>
+                                                    <td class="row-<?=$categoryType?>" data-category="<?=$category?>" data-roomid="<?=$roomId?>" data-timestamp="<?=$timeStamp?>"><?=$this->generateDisplay($categoryType, $category, $roomData, $timeStamp)?></td>
+                                                <?php endfor; ?>
+                                            </tr>
+                                            <?php endforeach; ?>
+    
+                                        <?php endforeach; ?>
+    
+                                        
+                                    </tbody>
+                                </table>
+                                
+                                <?php endforeach; ?>
+
+                            <?php endif; ?>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- load javascript -->
+        <script type="text/javascript" src="<?=func()->url().MODULE_ROOT?>inc/assets/moment.js"></script>
+        <script type="text/javascript" src="<?=func()->url().MODULE_ROOT?>inc/assets/lightpick.js"></script>
+        <script type="text/javascript" src="<?=func()->url().MODULE_ROOT?>inc/assets/main.js"></script>
+    </body>
+</html>

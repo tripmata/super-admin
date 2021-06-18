@@ -225,6 +225,9 @@
             "       <a href='"+phpvars.FRONTDESK_MANAGER+"' class='item' target='_blank'>" +
             "           Front desk" +
             "       </a>" +
+            "       <a href='#reservation/avaliability' class='item "+(arg == "avaliability" ? "active" : "")+"'>" +
+            "           Avaliability" +
+            "       </a>" +
             "   </div>" +
             "</div>");
 
@@ -245,6 +248,10 @@
         else if(arg == "customers")
         {
             DrawCustomers();
+        }
+        else if(arg == "avaliability")
+        {
+            DrawRoomAvailablitCalendar();
         }
     }
 
@@ -367,7 +374,7 @@
 
                 "<div class='l-pad-2 s-pad-1'>" +
                 "<h3 class='ui header' style='font-family: varela_roundregular; color: dimgray;'>" +
-                "<img src='"+phpvars.CDN_URL+"/images/roomservice.png' style='width: 40px; margin-top: 0px;'> Room category" +
+                "<img src='"+phpvars.CDN_URL+"/images/roomservice.png' style='width: 40px; margin-top: 0px;'> Room/Hall Category" +
                 "</h3>" +
                 "</div>" +
 

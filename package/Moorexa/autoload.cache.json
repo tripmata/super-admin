@@ -11,5 +11,6 @@
     "NameValuePair\/afdac040fe74e015b0b1840cf64ee149": ".\/.\/\/package\/TripMata\/\/NameValuePair.php",
     "IBase\/9bee044069c55de802c28bd57d7ea041": ".\/.\/\/package\/TripMata\/\/IBase.php",
     "IResponse\/7dd2d491779d1a817b94ef228f92ea39": ".\/.\/\/package\/TripMata\/\/IResponse.php",
-    "Response\/d64ed3e9c10229648e069f56e32f4c8e": ".\/.\/\/package\/TripMata\/\/Response.php"
+    "Response\/d64ed3e9c10229648e069f56e32f4c8e": ".\/.\/\/package\/TripMata\/\/Response.php",
+    "Source\\HttpClient\\Http\/1e38330acd06583c4bd108f7a971c9d7": ".\/.\/.\/src\/lab\/library\/\/HttpClient\/Http.php"
 }

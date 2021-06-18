@@ -74,7 +74,8 @@ class PropertyProvider implements ViewProviderInterface
                 'CUSTOMER_RESERVATION'  => file_get_contents('static/html/customer-reservations.html'),
                 'SETTINGS'              => file_get_contents('static/html/settings-property.html'),
             ],
-            'FRONTDESK_MANAGER' => func()->url('/frontdesk')
+            'FRONTDESK_MANAGER'     => func()->url('/frontdesk'),
+            'AVALIABILITY_MODULE'   => func()->url('/module-avaliability/')
         ]);
 
         // load session

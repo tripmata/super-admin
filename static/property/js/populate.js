@@ -2964,7 +2964,8 @@
 						}
 
 						let td4 = document.createElement("td");
-						td4.innerHTML += "<br/><span><span style='color: lightgray;'>Rooms: </span>" +
+						let roomOrHall = d.data[i].HallType == true ? 'Hall' : 'Rooms';
+						td4.innerHTML += "<br/><span><span style='color: lightgray;'>"+roomOrHall+": </span>" +
 							d.data[i].Rooms+"</span>";
 							td4.innerHTML += "<br/><span><span style='color: lightgray;'>Occupied: </span>" +
 							d.data[i].Occupied+"</span>";

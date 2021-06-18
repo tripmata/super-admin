@@ -1,0 +1,230 @@
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active
+{
+ -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.month-calendar{
+    display: flex;
+    font-family: 'Roboto';
+    font-weight: 400;
+}
+table {
+    border-collapse: collapse;
+}
+td, th {
+    border: 1px solid #ddd;
+    /* padding: 0.5rem; */
+    text-align: left;
+    border-right: 0px;
+}
+td:last-child, th:last-child{
+    border-right: 1px solid #ddd;
+}
+.month-calendar .scrollable table{
+    margin-right: -1px;
+}
+.month-calendar .scrollable table:first-child td:first-child, .month-calendar .scrollable table:first-child th:first-child{
+    border-left: 0px;
+}
+.month-calendar .non-scrollable table{
+    width: 100%;
+}
+.month-calendar .scrollable table thead tr, .month-calendar .scrollable table tbody tr{
+    display: flex;
+}
+.month-calendar .scrollable{
+    display: flex;
+    width: 85%;
+    overflow: scroll;
+
+}
+.month-calendar .scrollable table tbody tr td{
+    border-top: 0px;
+}
+.month-calendar .non-scrollable{
+    width: 15%;
+}
+.month-calendar th{
+    height: 60px;
+    overflow: hidden;
+    width: 60px;
+    text-align: center;
+}
+.month-calendar .scrollable table th{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.month-calendar td{
+    overflow: hidden;
+    width: 60px;
+    text-align: center;
+    height: 45px;
+}
+.month-calendar th h2{
+    margin: 0;
+    padding: 4px;
+    font-size: 16px;
+    line-height: 0px;
+    margin-top: 7px;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+.month-calendar th span{
+    display: block;
+    font-size: 12px;
+    font-weight: 100;
+}
+.month-calendar th small{
+    color: #999;
+    font-weight: normal;
+    font-size: 10px;
+}
+.month-calendar .small-text{
+    font-size: 12px;
+}
+.month-calendar .bold-text{
+    font-weight: 700;
+}
+.month-calendar .category-name{
+    flex-direction: column;
+    border-right: 1px solid #eee;
+}
+.month-calendar .category-name .description{
+    font-size: 12px;
+    color: #999;
+}
+.month-calendar .category-name h3{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 500;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.month-calendar .category-name a{
+    font-size: 12px;
+    text-decoration: underline;
+    color: #14c986;
+    margin-top: 2px;
+    display: block;
+}
+.month-calendar .category-row{
+    background-color: #eee;
+}
+.month-calendar .empty-cells{
+    display: block !important;
+}
+.month-calendar .empty-cells{
+    border-bottom: none;
+}
+.month-calendar .empty-cells td:first-child{
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+.month-calendar .toggle-box{
+    background-color: #fb3507;
+    height: 100%;
+    background-image: url('./cancel-white.png');
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.month-calendar .toggle-box:hover{
+    cursor: pointer;
+}
+.month-calendar .toggle-box.active{
+    background-image: url('./check-white.png');
+    background-color: #14c986;
+}
+.month-calendar .input-field{
+    height: 100%;
+    border: none;
+    text-align: center;
+    color: #000;
+    width: 100%;
+    font-size: 12px;
+    box-shadow: none i !important;
+    background-color: transparent !important;
+    filter: none;
+    outline: none;
+    background-image: none;
+}
+.month-calendar .input-field::-moz-focus-inner {border: 0;padding: 0;}
+/* .month-calendar .toggle-box.active:hover{
+    background-image: url('./cancel-white.png');
+    background-color: #fb3507;
+} */
+.month-calendar .text-entry-field{
+    font-size: 12px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.month-calendar .max-table-height{
+    height: 70px;
+}
+.month-calendar .non-scrollable .label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+.month-calendar .non-scrollable .label span{
+    font-size: 14px;
+    margin-left: 5px;
+}
+.month-calendar .non-scrollable label input{
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 4px;
+}
+.lightpick__day.is-start-date, .lightpick__day.is-end-date, .lightpick__day.is-start-date:hover, .lightpick__day.is-end-date:hover{
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle fill='%2314c986' cx='16' cy='16' r='16'/%3E%3C/svg%3E");
+}
+.table-preloader{
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    background-color: #fcfcfc;
+}
+.table-preloader:after{
+    position: absolute;
+    top: 0;
+    left: 100%;
+    height: 100%;
+    width: 50%;
+    content: "";
+    background-color: #f5f5f5;
+    animation-name: preload;
+    animation-duration: 0.7s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    animation-delay: 0s;
+}
+@keyframes preload{
+    to{
+        left: -50%;
+    }
+}
+
+@-webkit-keyframes preload{
+    to{
+        left: -50%;
+    }
+}
