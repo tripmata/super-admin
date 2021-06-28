@@ -367,11 +367,13 @@ class Http
         // default response
         $response = null;
 
+        $send = $client->request(strtoupper($method), $path, $requestBody);
+
+        
         try 
         {
             // send request
             $send = $client->request(strtoupper($method), $path, $requestBody);
-
 
             // response
             $response = new class ($send)
