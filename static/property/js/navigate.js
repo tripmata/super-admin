@@ -95,7 +95,7 @@
                                     "<a href='#reservation/customers' class='partnernav__dropdown-item'>Customers</a>"+
                                     "<a href='#reservation/lodging' class='partnernav__dropdown-item'>In-house Guest</a>"+
                                     "<a href='"+phpvars.FRONTDESK_MANAGER+"' class='partnernav__dropdown-item' target='_blank'>Front desk</a>"+
-                                    "<a href='#reservation/avaliability' class='partnernav__dropdown-item'>Avaliability</a>"+
+                                    "<a href='#reservation/avaliability' class='partnernav__dropdown-item'>Avaliability Manager</a>"+
                                 "</div>"+
                             "</div>"+
                         "</div>"+
