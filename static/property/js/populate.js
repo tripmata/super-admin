@@ -167,202 +167,313 @@
 
 	function populateProperty()
 	{
-		$("#property-page-1").html("<div class='ui placeholder'><div class='line'></div><div class='line'></div></div>");
-		$("#property-page-2").html("<div class='ui placeholder'><div class='line'></div><div class='line'></div></div>");
+		$(".property_item").css('display', 'block');
 
-		$("#property-side-1").html("<div class='ui placeholder'><div class='line'></div><div class='line'></div></div>");
-		//$("#property-side-2").html("<div class='ui placeholder'><div class='line'></div><div class='line'></div></div>");
-		$("#property-side-2").hide();
-		$("#property-name").addClass("ui placeholder");
-		$("#property-name").css("color","transparent");
+		$("#city_info").html("<div class='ui placeholder'><div class='line'></div><div class='line'></div></div>");
+		$("#state_info").html("<div class='ui placeholder'><div class='line'></div><div class='line'></div></div>");
+		$("#phone_info").html("<div class='ui placeholder'><div class='line'></div><div class='line'></div></div>");
+		$("#email_info").html("<div class='ui placeholder'><div class='line'></div><div class='line'></div></div>");
+		$("#address_info").html("<div class='ui placeholder'><div class='line'></div><div class='line'></div></div>");
 
-		// create dashboard stats wrapper
-		let dashboardStatsWrapper = document.createElement('div');
-		dashboardStatsWrapper.innerHTML = phpvars.html.DASHBOARD_STATS;
-		document.querySelector('#property-page-1').parentNode.insertBefore(dashboardStatsWrapper, document.querySelector('#property-page-1'));
+		// $("#first_analytics").html("<div class='ui placeholder'><div class='line'></div><div class='line'></div></div>");
+		$("#all_reviews").css('margin', '1rem 1rem');
+		$("#all_reviews").html("<div class='ui placeholder'><div class='line'></div><div class='line'></div></div>");
+
+		let analytics = document.querySelectorAll('.analytic');
+
+		for (let i = 0; i < analytics.length; i++) {
+			analytics[i].style.display = 'block'
+			analytics[i].innerHTML = "<div class='ui placeholder'><div class='line'></div><div class='line'></div></div>"
+		}
+
+		$("#reviews").addClass('property_item');
+
+		// $("#property-page-1").html("<div class='ui placeholder'><div class='line'></div><div class='line'></div></div>");
+		// $("#property-page-2").html("<div class='ui placeholder'><div class='line'></div><div class='line'></div></div>");
+
+		// $("#property-side-1").html("<div class='ui placeholder'><div class='line'></div><div class='line'></div></div>");
+		// //$("#property-side-2").html("<div class='ui placeholder'><div class='line'></div><div class='line'></div></div>");
+		// $("#property-side-2").hide();
+		// $("#property-name").addClass("ui placeholder");
+		// $("#property-name").css("color","transparent");
+
+		// // create dashboard stats wrapper
+		// let dashboardStatsWrapper = document.createElement('div');
+		// dashboardStatsWrapper.innerHTML = phpvars.html.DASHBOARD_STATS;
+		// document.querySelector('#property-page-1').parentNode.insertBefore(dashboardStatsWrapper, document.querySelector('#property-page-1'));
 
 		postJson("hms-admin/worker", function(data, status){
 
 			if(status === "done")
 			{
 				let d = JSON.parse(data);
+				$("#all_reviews").css('margin', '0 1rem');
+				$('#all_reviews').html('');		
+				$("#reviews").removeClass('property_item');
+				$("#reviews").css('display', 'block');
+						
+				// for(let i = 0; i < d.data.Gallery.length; i++)
+				// {
+				// 	var gallery = document.createElement('div');
+				// 	gallery.className = 'gallery-content';
+				// 	gallery.innerHTML =
+				// 		"<div class='pad-t'>" +
+				// 		"<img src='"+phpvars.FILES_CDN+"/"+d.data.Gallery[i]+"' style='width: 100%;'/>" +
+				// 		"</div>";
 
-				for(let i = 0; i < d.data.Gallery.length; i++)
-				{
-					var gallery = document.createElement('div');
-					gallery.className = 'gallery-content';
-					gallery.innerHTML =
-						"<div class='pad-t'>" +
-						"<img src='"+phpvars.FILES_CDN+"/"+d.data.Gallery[i]+"' style='width: 100%;'/>" +
-						"</div>";
-
-					// add gallery
-					dashboardStatsWrapper.find('#property-gallery', (e) => {
-						e.appendWhenReady(gallery, '.contain-images');
-					});
-				}
-
+				// 	// add gallery
+				// 	dashboardStatsWrapper.find('#property-gallery', (e) => {
+				// 		e.appendWhenReady(gallery, '.contain-images');
+				// 	});
+				// }
 				// add gallery
 				if(d.status === "success")
 				{
-					$("#property-name").removeClass("ui placeholder");
-					$("#property-name").css("color","dimgray");
-					$("#property-name").html(d.data.Name);
-
+					// $("#property-name").removeClass("ui placeholder");
+					// $("#property-name").css("color","dimgray");
+					// $("#property-name").html(d.data.Name);
+					
 					$("#property-status").prop("disabled", d.data.Suspended);
 					$("#property-status").prop("checked", (d.data.Status && !d.data.Suspended));
 
-					$("#property-side-1").html(
-						"<div class=''>" +
-						"<div>" +
-						"<h3 style='font-family: varela_roundregular;'>Property Information</h3>" +
-						"</div>" +
-						"<hr/>" +
-						"<div class='w3-row'>" +
-						"<div class='w3-col l5 m5 s5'>" +
-						"<img src='"+phpvars.CDN_URL+"/images/city.png' style='width: 30px;'/>" +
-						"</div>" +
-						"<div class='w3-col l7 m7 s7 align-r'>" +
-						"<h4 style='font-family: varela_roundregular; margin: 0; color: dimgray;'>City</h4>" +
-						"<h6 class='sleak text-small' style='margin: 0; margin-top: 5px;'>"+d.data.Cityname+"</h6>" +
-						"</div>" +
-						"</div>" +
-						"<div class='w3-row' style='margin-top: 30px;'>" +
-						"<div class='w3-col l5 m5 s5'>" +
-						"<img src='"+phpvars.CDN_URL+"/images/map_marker.png' style='width: 30px;'/>" +
-						"</div>" +
-						"<div class='w3-col l7 m7 s7 align-r'>" +
-						"<h4 style='font-family: varela_roundregular; margin: 0; color: dimgray;'>State</h4>" +
-						"<h6 class='sleak text-small' style='margin: 0; margin-top: 5px;'>"+d.data.Statename+"</h6>" +
-						"</div>" +
-						"</div>" +
-						"<div class='w3-row' style='margin-top: 30px;'>" +
-						"<div class='w3-col l5 m5 s5'>" +
-						"<img src='"+phpvars.CDN_URL+"/images/country.png' style='width: 30px;'/>" +
-						"</div>" +
-						"<div class='w3-col l7 m7 s7 align-r'>" +
-						"<h4 style='font-family: varela_roundregular; margin: 0; color: dimgray;'>Address</h4>" +
-						"<h6 class='sleak text-small' style='margin: 0; margin-top: 5px;'>"+d.data.Address+"</h6>" +
-						"</div>" +
-						"</div>" +
-						"<div class='w3-row' style='margin-top: 30px;'>" +
-						"<div class='w3-col l5 m5 s5'>" +
-						"<img src='"+phpvars.CDN_URL+"/images/phone.png' style='width: 30px;'/>" +
-						"</div>" +
-						"<div class='w3-col l7 m7 s7 align-r'>" +
-						"<h4 style='font-family: varela_roundregular; margin: 0; color: dimgray;'>Phone</h4>" +
-						"<h6 class='sleak text-small' style='margin: 0; margin-top: 5px;'>"+d.data.Phone1+"</h6>" +
-						"</div>" +
-						"</div>" +
-						"<div class='w3-row' style='margin-top: 30px;'>" +
-						"<div class='w3-col l5 m5 s5'>" +
-						"<img src='"+phpvars.CDN_URL+"/images/email.png' style='width: 30px;'/>" +
-						"</div>" +
-						"<div class='w3-col l7 m7 s7 align-r'>" +
-						"<h4 style='font-family: varela_roundregular; margin: 0; color: dimgray;'>Email</h4>" +
-						"<h6 class='sleak text-small' style='margin: 0; margin-top: 5px; word-wrap: break-word; white-space: nowrap;'>"+d.data.Email1+"</h6>" +
-						"</div>" +
-						"</div>" +
+					$(".property_item").css('display', 'flex');
+					
+					$("#property_name").text(d.data.Name);
+
+					$("#city_info").html(
+						"<i class='bx bx-location-plus property_icon'></i>"+
+						"<div class='property_text'>"+
+							"<p>CITY</p>"+"<span>"+d.data.Cityname+"</span>"+
 						"</div>"
 					);
+					$("#state_info").html(
+						"<i class='bx bx-map-alt property_icon'></i>"+
+						"<div class='property_text'>"+
+							"<p>STATE</p>"+"<span>"+d.data.Statename+"</span>"+
+						"</div>"
+					);
+					$("#phone_info").html(
+						"<i class='bx bx-mobile property_icon'></i>"+
+						"<div class='property_text'>"+
+							"<p>PHONE</p>"+"<span>"+d.data.Phone1+"</span>"+
+						"</div>"
+					);
+					$("#email_info").html(
+						"<i class='bx bx-mail-send property_icon'></i>"+
+						"<div class='property_text'>"+
+							"<p>EMAIL</p>"+"<span>"+d.data.Email1+"</span>"+
+						"</div>"
+					);
+					$("#address_info").html(
+						"<i class='bx bx-building-house property_icon'></i>"+
+						"<div class='property_text' id='address_text'>"+
+							"<p>ADDRESS</p>"+"<span>"+d.data.Address+"</span>"+
+						"</div>"
+					);
+
+					$("#reviews").html(
+						"<div class='reviews_header'>"+
+                        	"<h3>Recent Reviews</h3>"+
+						"</div>"+
+						"<div id='all_reviews'>"+"</div>"
+					);
+
+					let reviewHtml = '';
+
+					if (d.reviews.length > 0) {
+						d.reviews.forEach(review => {
+							let { Created } = review;
+							reviewHtml += "<div class='review_item'>"+
+												"<div class='review_bio'>"+
+													"<div>"+(Number(review.Star) < 10 ? review.Star+'.0' : review.Star)+"</div>"+
+													"<span class='center_vertical'>"+(review.Customer.Accountname || 'Anonymous')+"</span>"+
+												"</div>"+
+	
+												"<div class='review_text center_vertical'>"+
+													"<p>"+review.Body+"</p>"+
+												"</div>"+
+	
+												"<div class='review_date'>"+
+													"<p>"+Created.MonthName+" "+Created.Day+", "+Created.Year+"</p>"+
+												"</div>"+
+											"</div>";
+						});						
+					}else{
+						reviewHtml = "<div class='review_item'>"+
+										"<div class='review_bio'>"+										
+										"<h4 style='color: silver;'>No Reviews available.</h4>"+
+										"</div>"+
+									"</div>";
+					}
+
+					$('#all_reviews').html(reviewHtml);					
+
+					// $("#property-side-1").html(
+						// "<div class=''>" +
+						// "<div>" +
+						// "<h3 style='font-family: varela_roundregular;'>Property Information</h3>" +
+						// "</div>" +
+						// "<hr/>" +
+						// "<div class='w3-row'>" +
+						// "<div class='w3-col l5 m5 s5'>" +
+						// "<img src='"+phpvars.CDN_URL+"/images/city.png' style='width: 30px;'/>" +
+						// "</div>" +
+						// "<div class='w3-col l7 m7 s7 align-r'>" +
+						// "<h4 style='font-family: varela_roundregular; margin: 0; color: dimgray;'>City</h4>" +
+						// "<h6 class='sleak text-small' style='margin: 0; margin-top: 5px;'>"+d.data.Cityname+"</h6>" +
+						// "</div>" +
+						// "</div>" +
+						// "<div class='w3-row' style='margin-top: 30px;'>" +
+						// "<div class='w3-col l5 m5 s5'>" +
+						// "<img src='"+phpvars.CDN_URL+"/images/map_marker.png' style='width: 30px;'/>" +
+						// "</div>" +
+						// "<div class='w3-col l7 m7 s7 align-r'>" +
+						// "<h4 style='font-family: varela_roundregular; margin: 0; color: dimgray;'>State</h4>" +
+						// "<h6 class='sleak text-small' style='margin: 0; margin-top: 5px;'>"+d.data.Statename+"</h6>" +
+						// "</div>" +
+						// "</div>" +
+						// "<div class='w3-row' style='margin-top: 30px;'>" +
+						// "<div class='w3-col l5 m5 s5'>" +
+						// "<img src='"+phpvars.CDN_URL+"/images/country.png' style='width: 30px;'/>" +
+						// "</div>" +
+						// "<div class='w3-col l7 m7 s7 align-r'>" +
+						// "<h4 style='font-family: varela_roundregular; margin: 0; color: dimgray;'>Address</h4>" +
+						// "<h6 class='sleak text-small' style='margin: 0; margin-top: 5px;'>"+d.data.Address+"</h6>" +
+						// "</div>" +
+						// "</div>" +
+						// "<div class='w3-row' style='margin-top: 30px;'>" +
+						// "<div class='w3-col l5 m5 s5'>" +
+						// "<img src='"+phpvars.CDN_URL+"/images/phone.png' style='width: 30px;'/>" +
+						// "</div>" +
+						// "<div class='w3-col l7 m7 s7 align-r'>" +
+						// "<h4 style='font-family: varela_roundregular; margin: 0; color: dimgray;'>Phone</h4>" +
+						// "<h6 class='sleak text-small' style='margin: 0; margin-top: 5px;'>"+d.data.Phone1+"</h6>" +
+						// "</div>" +
+						// "</div>" +
+						// "<div class='w3-row' style='margin-top: 30px;'>" +
+						// "<div class='w3-col l5 m5 s5'>" +
+						// "<img src='"+phpvars.CDN_URL+"/images/email.png' style='width: 30px;'/>" +
+						// "</div>" +
+						// "<div class='w3-col l7 m7 s7 align-r'>" +
+						// "<h4 style='font-family: varela_roundregular; margin: 0; color: dimgray;'>Email</h4>" +
+						// "<h6 class='sleak text-small' style='margin: 0; margin-top: 5px; word-wrap: break-word; white-space: nowrap;'>"+d.data.Email1+"</h6>" +
+						// "</div>" +
+						// "</div>" +
+						// "</div>"
+					// );
 					
-					
+					// return;
 					// get stats
 					postJson('hms-admin/statistics', function(e){
 
 						// parse json
 						let json = JSON.parse(e);
 
+						for (let i = 0; i < analytics.length; i++) {
+							analytics[i].style.display = 'flex'
+						}
+						analytics[0].innerHTML = "<h2>"+json.reservationsThisMonth+"</h2>"+"<span>Reservation this month</span>";
+						analytics[1].innerHTML = "<h2>"+json.reservationsToday+"</h2>"+"<span>Reservation today</span>";
+						analytics[2].innerHTML = "<h2>"+json.noShow+"</h2>"+"<span>No show</span>";
+						analytics[3].innerHTML = "<h2>"+json.propertyViews+"</h2>"+"<span>Property views</span>";
+						analytics[4].innerHTML = "<h2>"+json.todayAvailability+"</h2>"+"<span>Today Availability</span>";
+						analytics[5].innerHTML = "<h2>"+json.inHouseGuests+"</h2>"+"<span>In house guests</span>";
+
 						// add reservation info
-						dashboardStatsWrapper.find('#reservation-section', (e) => {
-							e.updateWhenReady('.stats-rows', function(){
-								// get all dashboard-table-row
-								const tableHeader = this.querySelectorAll('.dashboard-table-row > h1');
+						// dashboardStatsWrapper.find('#reservation-section', (e) => {
+						// 	e.updateWhenReady('.stats-rows', function(){
+						// 		// get all dashboard-table-row
+						// 		const tableHeader = this.querySelectorAll('.dashboard-table-row > h1');
 								
-								// populate data
-								tableHeader.item(0).textContent = json.reservationsThisMonth;
-								tableHeader.item(1).textContent = json.reservationsToday;
-								tableHeader.item(2).textContent = json.noShow;
-								tableHeader.item(3).textContent = json.propertyViews;
-								tableHeader.item(4).textContent = json.todayAvailability;
-								tableHeader.item(5).textContent = json.inHouseGuests;
-							});
-						});
+						// 		// populate data
+						// 		tableHeader.item(0).textContent = json.reservationsThisMonth;
+						// 		tableHeader.item(1).textContent = json.reservationsToday;
+						// 		tableHeader.item(2).textContent = json.noShow;
+						// 		tableHeader.item(3).textContent = json.propertyViews;
+						// 		tableHeader.item(4).textContent = json.todayAvailability;
+						// 		tableHeader.item(5).textContent = json.inHouseGuests;
+						// 	});
+						// });
 
 
 						// add other info
-						dashboardStatsWrapper.find('#other-stats', (e) => {
-							e.updateWhenReady('.stats-rows', function(){
-								// get all dashboard-table-row
-								const tableHeader = this.querySelectorAll('.dashboard-table-row > h1');
+						analytics[6].innerHTML = "<h2>"+json.dueToCheckout+"</h2>"+"<span>Due to checkout</span>";
+						analytics[7].innerHTML = "<h2>"+json.checkOutOverdue+"</h2>"+"<span>Check-out overdue</span>";
+						analytics[8].innerHTML = "<h2>"+json.totalReviewScore+"</h2>"+"<span>Total review score</span>";
+						analytics[9].innerHTML = "<h2>"+json.totalReviewCount+"</h2>"+"<span>Total reviews</span>";
+						analytics[10].innerHTML = "<h2>"+json.reviewsThisMonth+"</h2>"+"<span>This month reviews</span>";
+						analytics[11].innerHTML = "<h2>0</h2>"+"<span>Inbox</span>";
+
+						// dashboardStatsWrapper.find('#other-stats', (e) => {
+						// 	e.updateWhenReady('.stats-rows', function(){
+						// 		// get all dashboard-table-row
+						// 		const tableHeader = this.querySelectorAll('.dashboard-table-row > h1');
 								
-								// populate data
-								tableHeader.item(0).textContent = json.dueToCheckout;
-								tableHeader.item(1).textContent = json.checkOutOverdue;
-								tableHeader.item(2).textContent = json.totalReviewScore;
-								tableHeader.item(3).textContent = json.totalReviewCount;
-								tableHeader.item(4).textContent = json.reviewsThisMonth;
-								//tableHeader.item(4).textContent = json.;
-								//tableHeader.item(5).textContent = json.;
-							});
-						});
+						// 		// populate data
+						// 		tableHeader.item(0).textContent = json.dueToCheckout;
+						// 		tableHeader.item(1).textContent = json.checkOutOverdue;
+						// 		tableHeader.item(2).textContent = json.totalReviewScore;
+						// 		tableHeader.item(3).textContent = json.totalReviewCount;
+						// 		tableHeader.item(4).textContent = json.reviewsThisMonth;
+						// 		//tableHeader.item(4).textContent = json.;
+						// 		//tableHeader.item(5).textContent = json.;
+						// 	});
+						// });
 
 						// add reviews
-						$("#property-page-1").html(
-							"<div class=''>" +
-							"<div>" +
-							"<h3 style='font-family: varela_roundregular;'>Latest reviews</h3>" +
-							"<hr/>" +
-							"<div id='review-con'></div>" +
-							"</div>" +
-							"</div>");
+						// $("#property-page-1").html(
+						// 	"<div class=''>" +
+						// 	"<div>" +
+						// 	"<h3 style='font-family: varela_roundregular;'>Latest reviews</h3>" +
+						// 	"<hr/>" +
+						// 	"<div id='review-con'></div>" +
+						// 	"</div>" +
+						// 	"</div>");
 	
-						let revv = 0.0;
+						// let revv = 0.0;
 	
-						for(let i = 0; i < d.reviews.length; i++)
-						{
-							revv += Number(d.reviews[i].Star);
-						}
+						// for(let i = 0; i < d.reviews.length; i++)
+						// {
+						// 	revv += Number(d.reviews[i].Star);
+						// }
 	
-						for(let i = 0; i < d.reviews.length; i++)
-						{
-							let con = document.createElement("div");
-							con.innerHTML =
-								"<div>" +
-								"<div class='w3-row'>" +
-								"<div class='w3-col l12 m12 s12 group-review'>" +
-								"<h6 class='review-name' style='font-family: quicksandregular; color: dimgray; color:#26A69A;'>" +							"</h6>" +
-								"<h6 style='color: #f2ebeb;'>" +
-								"<i class='heart "+(d.reviews[i].Star >= 1 ? "red-text" : "")+" icon'></i>" +
-								"<i class='heart "+(d.reviews[i].Star >= 2 ? "red-text" : "")+" icon'></i>" +
-								"<i class='heart "+(d.reviews[i].Star >= 3 ? "red-text" : "")+" icon'></i>" +
-								"<i class='heart "+(d.reviews[i].Star >= 4 ? "red-text" : "")+" icon'></i>" +
-								"<i class='heart "+(d.reviews[i].Star >= 5 ? "red-text" : "")+" icon'></i>" +
-								"<i class='heart "+(d.reviews[i].Star >= 6 ? "red-text" : "")+" icon'></i>" +
-								"<i class='heart "+(d.reviews[i].Star >= 7 ? "red-text" : "")+" icon'></i>" +
-								"<i class='heart "+(d.reviews[i].Star >= 8 ? "red-text" : "")+" icon'></i>" +
-								"<i class='heart "+(d.reviews[i].Star >= 9 ? "red-text" : "")+" icon'></i>" +
-								"<i class='heart "+(d.reviews[i].Star >= 10 ? "red-text" : "")+" icon'></i>" +
-								"</h6>" +
-								"</div>" +
-								"<div class='w3-col l6 m6 s6 align-r'>" +
+						// for(let i = 0; i < d.reviews.length; i++)
+						// {
+						// 	let con = document.createElement("div");
+						// 	con.innerHTML =
+						// 		"<div>" +
+						// 		"<div class='w3-row'>" +
+						// 		"<div class='w3-col l12 m12 s12 group-review'>" +
+						// 		"<h6 class='review-name' style='font-family: quicksandregular; color: dimgray; color:#26A69A;'>" +							"</h6>" +
+						// 		"<h6 style='color: #f2ebeb;'>" +
+						// 		"<i class='heart "+(d.reviews[i].Star >= 1 ? "red-text" : "")+" icon'></i>" +
+						// 		"<i class='heart "+(d.reviews[i].Star >= 2 ? "red-text" : "")+" icon'></i>" +
+						// 		"<i class='heart "+(d.reviews[i].Star >= 3 ? "red-text" : "")+" icon'></i>" +
+						// 		"<i class='heart "+(d.reviews[i].Star >= 4 ? "red-text" : "")+" icon'></i>" +
+						// 		"<i class='heart "+(d.reviews[i].Star >= 5 ? "red-text" : "")+" icon'></i>" +
+						// 		"<i class='heart "+(d.reviews[i].Star >= 6 ? "red-text" : "")+" icon'></i>" +
+						// 		"<i class='heart "+(d.reviews[i].Star >= 7 ? "red-text" : "")+" icon'></i>" +
+						// 		"<i class='heart "+(d.reviews[i].Star >= 8 ? "red-text" : "")+" icon'></i>" +
+						// 		"<i class='heart "+(d.reviews[i].Star >= 9 ? "red-text" : "")+" icon'></i>" +
+						// 		"<i class='heart "+(d.reviews[i].Star >= 10 ? "red-text" : "")+" icon'></i>" +
+						// 		"</h6>" +
+						// 		"</div>" +
+						// 		"<div class='w3-col l6 m6 s6 align-r'>" +
 	
-								"</div>" +
-								"</div>" +
-								"<p style='font-family: quicksandregular; color: dimgray; line-height: 170%; font-size: 16px;'>"+d.reviews[i].Body+"</p>" +
-								"</div><hr/>";
+						// 		"</div>" +
+						// 		"</div>" +
+						// 		"<p style='font-family: quicksandregular; color: dimgray; line-height: 170%; font-size: 16px;'>"+d.reviews[i].Body+"</p>" +
+						// 		"</div><hr/>";
 	
-							document.getElementById("review-con").appendChild(con);
+						// 	document.getElementById("review-con").appendChild(con);
 	
-							if(i >= 5)
-							{
-								break;
-							}
-						}
+						// 	if(i >= 5)
+						// 	{
+						// 		break;
+						// 	}
+						// }
 
-					}, {});
-					
-
+					}, {});			
 					
 				}
 				else

@@ -291,34 +291,111 @@
 
         $("#min-menue-con").html("");
         $("#property-page").html(
-            "<div class='' style='margin: auto;'>" +
-            "<div class='pad-2' style=''>" +
-            "<div class='w3-row'>" +
-            "<div class='w3-col l8 m8 s12'>" +
-            "<div class='l-width-xl pad-t'>" +
-            "<h2 id='property-name' style='font-family: varela_roundregular; font-weight: normal; color: dimgray;'>Property Name</h2>" +
-            "<div id='property-page-1' class='pad-3 lift-1 widget curve' style=''>" +
-            "" +
-            "</div>" +
-            "</div> " +
-            "</div> " +
-            "<div class='w3-col l4 m4 s12'>" +
-            "<div class=''>" +
-            "<h1 style='font-family: varela_roundregular; font-weight: normal; color: dimgray;'>" +
-            "<div class='switch'><label><input id='property-status' type='checkbox' disabled onchange='switchPropertyState(this)'/><span class='lever'></span></label>" +
-            "<span style='font-size: 16px;'>Open / close property</span></div> " +
-            "</h1>" +
-            "<div class='pad-3 lift-1 widget curve' style='margin-top: 10px;'>" +
-            "<div id='property-side-1' class=''>" +
-            "" +
-            "</div>" +
-            "</div>" +
-            "</div> " +
-            "</div> " +
-            "<div class='w3-col l4 m4 s12'></div> " +
-            "</div> " +
-            "</div>" +
-            "</div>");
+            // "<div class='' style='margin: auto;'>" +
+            // "<div class='pad-2' style=''>" +
+            // "<div class='w3-row'>" +
+            // "<div class='w3-col l8 m8 s12'>" +
+            // "<div class='l-width-xl pad-t'>" +
+            // "<h2 id='property-name' style='font-family: varela_roundregular; font-weight: normal; color: dimgray;'>Property Name</h2>" +
+            // "<div id='property-page-1' class='pad-3 lift-1 widget curve' style=''>" +
+            // "" +
+            // "</div>" +
+            // "</div> " +
+            // "</div> " +
+            // "<div class='w3-col l4 m4 s12'>" +
+            // "<div class=''>" +
+            // "<h1 style='font-family: varela_roundregular; font-weight: normal; color: dimgray;'>" +
+            // "<div class='switch'><label><input id='property-status' type='checkbox' disabled onchange='switchPropertyState(this)'/><span class='lever'></span></label>" +
+            // "<span style='font-size: 16px;'>Open / close property</span></div> " +
+            // "</h1>" +
+            // "<div class='pad-3 lift-1 widget curve' style='margin-top: 10px;'>" +
+            // "<div id='property-side-1' class=''>" +
+            // "" +
+            // "</div>" +
+            // "</div>" +
+            // "</div> " +
+            // "</div> " +
+            // "<div class='w3-col l4 m4 s12'></div> " +
+            // "</div> " +
+            // "</div>" +
+            // "</div>"
+
+
+            
+            "<div class='analytics_container'>"+
+                "<div class='property_box'>"+
+                    "<div class='property_header'>"+
+                        "<h1 style='margin: 0;'>Property Information</h1>"+
+                        "<div class='switch'>"+
+                        "<label><input id='property-status' type='checkbox' disabled onchange='switchPropertyState(this)'/><span class='lever'></span></label>"+
+                        "<span style='font-size: 11px;'>Open / Close property</span>"+
+                        "</div>" +
+                    "</div>"+
+                    "<div class='triple_column property_data'>"+
+                        "<div id='city_info' class='property_item'>"+"</div>"+
+                        "<div id='state_info' class='property_item'>"+"</div>"+
+                        "<div id='phone_info' class='property_item'>"+"</div>"+
+                    "</div>"+
+                    "<div class='double_column property_data'>"+
+                        "<div id='email_info' class='property_item'>"+"</div>"+
+                        "<div id='address_info' class='property_item'>"+"</div>"+
+                    "</div>"+
+                    // "<div class='single_column property_data'>"+
+                    // "</div>"+                    
+                "</div>"+
+                "<div>"+
+                    "<div class='analytics_box' id='first_analytics'>"+
+                        "<section class='analytic'>"+"</section>"+
+                        "<section class='analytic'>"+"</section>"+
+                        "<section class='analytic'>"+"</section>"+
+                    "</div>"+
+                    
+                    "<div class='analytics_box'>"+
+                        "<section class='analytic'>"+"</section>"+
+                        "<section class='analytic'>"+"</section>"+
+                        "<section class='analytic'>"+"</section>"+
+                    "</div>"+
+
+                    "<div class='analytics_box'>"+
+                        "<section class='analytic'>"+"</section>"+
+                        "<section class='analytic'>"+"</section>"+
+                        "<section class='analytic'>"+"</section>"+
+                    "</div>"+
+
+                    "<div class='analytics_box'>"+
+                        "<section class='analytic'>"+"</section>"+
+                        "<section class='analytic'>"+"</section>"+
+                        "<section class='analytic'>"+"</section>"+
+                    "</div>"+
+                "</div>"+
+
+                "<div id='reviews' class='reviews property_item'>"+
+                    // "<div class='reviews_header'>"+
+                    //     "<h3>Recent Reviews</h3>"+
+                    // "</div>"+
+                    // "<div id='all_reviews'>"+
+                    "<div class='ui placeholder'>"+
+                        "<div class='line'>"+"</div>"+
+                        "<div class='line'>"+"</div>"+
+                    "</div>"+
+                        // "<div class='review_item'>"+
+                        //     "<div class='review_bio'>"+
+                        //         "<div>8.0</div>"+
+                        //         "<span class='center_vertical'>Victor Chukwuemekaeze</span>"+
+                        //     "</div>"+
+
+                        //     "<div class='review_text center_vertical'>"+
+                        //         "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit....</p>"+
+                        //     "</div>"+
+                        //     "<div class='review_date'>"+
+                        //         "<p>July 28, 2021</p>"+
+                        //     "</div>"+
+                        // "</div>"+                        
+                    // "</div>"+
+                                    
+                "</div>"+                
+            "</div>"
+            );
 
         populateProperty();
     }

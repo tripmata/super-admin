@@ -22,7 +22,8 @@
         "{CDN_FONT_URL}/nunito/stylesheet.css",
         "{CDN_FONT_URL}/varelaround/stylesheet.css",
         "{LOCAL_CSS}/reset.css",
-        "{LOCAL_CSS}/menu.css"
+        "{LOCAL_CSS}/menu.css",
+        "{LOCAL_CSS}/partner.css"
 
     ],
 
