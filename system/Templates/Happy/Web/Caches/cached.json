@@ -1,21 +1,9 @@
 {
-    "7fb5c80d971cf4d87ad12f1fa7de72cc": {
-        "lastModified": 1606319449,
-        "hash": "833a5432879d5a813cf3d7ba39b230d3",
-        "path": "\/Caches\/Tmp\/7fb5c80d971cf4d87ad12f1fa7de72cc.cache",
-        "file": ".\/src\/components\/Template\/header.html"
-    },
-    "9b24ccef8bf3481f0d8c5af583a6780e": {
-        "lastModified": 1606312715,
-        "hash": "57704b14256a335a8a69a0dd5db51b9d",
-        "path": "\/Caches\/Tmp\/9b24ccef8bf3481f0d8c5af583a6780e.cache",
-        "file": "Views\/home.html"
-    },
-    "22d7c6e8742f092d35958ba04c6f6fc0": {
-        "lastModified": 1606302157,
-        "hash": "bf7c0e6135ca653b9c93c52dcedbec31",
-        "path": "\/Caches\/Tmp\/22d7c6e8742f092d35958ba04c6f6fc0.cache",
-        "file": ".\/src\/components\/Template\/footer.html"
+    "01cf98c3e8deca9b1eedb05bfc7a68c3": {
+        "lastModified": 1608048274,
+        "hash": "5f936f7f973c392d7c813fb5cc169b11",
+        "path": "\/Caches\/Tmp\/01cf98c3e8deca9b1eedb05bfc7a68c3.cache",
+        "file": ".\/.\/app\/Manager\/Custom\/header.html"
     },
     "08d8e0617304e0c51dd8115d3595a4b7": {
         "lastModified": 1606466680,
@@ -23,35 +11,17 @@
         "path": "\/Caches\/Tmp\/08d8e0617304e0c51dd8115d3595a4b7.cache",
         "file": ".\/.\/app\/Manager\/Views\/home.html"
     },
-    "33357131b4e19fe71adab3f19a89162a": {
-        "lastModified": 1606317562,
-        "hash": "41706698270140d9b67f4e534b9e6ffc",
-        "path": "\/Caches\/Tmp\/33357131b4e19fe71adab3f19a89162a.cache",
-        "file": ".\/\/views\/home.html"
-    },
-    "01cf98c3e8deca9b1eedb05bfc7a68c3": {
-        "lastModified": 1608048274,
-        "hash": "5f936f7f973c392d7c813fb5cc169b11",
-        "path": "\/Caches\/Tmp\/01cf98c3e8deca9b1eedb05bfc7a68c3.cache",
-        "file": ".\/.\/app\/Manager\/Custom\/header.html"
-    },
-    "249ba7c04d07ab27a4c550dbb98444e0": {
-        "lastModified": 1606317646,
-        "hash": "2763b65dc5856af0d697cf43bc63bad5",
-        "path": "\/Caches\/Tmp\/249ba7c04d07ab27a4c550dbb98444e0.cache",
-        "file": ".\/\/views\/header.html"
-    },
-    "4a2886d8ab27e0e5c8196afb79bb277a": {
-        "lastModified": 1606318067,
-        "hash": "8bbaa2ec90f08e2236133ad98c3d8b23",
-        "path": "\/Caches\/Tmp\/4a2886d8ab27e0e5c8196afb79bb277a.cache",
-        "file": ".\/.\/app\/Manager\/Views\/login.html"
-    },
     "745fd955f5d90709c86c73588719c065": {
         "lastModified": 1606382751,
         "hash": "a67adc482e9bb289edf6df3d2ccf425b",
         "path": "\/Caches\/Tmp\/745fd955f5d90709c86c73588719c065.cache",
         "file": ".\/.\/app\/Manager\/Custom\/footer.html"
+    },
+    "2895598ccb22e67aa53b0553cf3af1f7": {
+        "lastModified": 1627577386,
+        "hash": "01a9970db7e26847f0a57da1bbfb361e",
+        "path": "\/Caches\/Tmp\/2895598ccb22e67aa53b0553cf3af1f7.cache",
+        "file": ".\/.\/app\/Manager\/Custom\/\/property-header.html"
     },
     "53395354b872e9aa438b375ac90abae7": {
         "lastModified": 1625624913,
@@ -59,28 +29,22 @@
         "path": "\/Caches\/Tmp\/53395354b872e9aa438b375ac90abae7.cache",
         "file": ".\/.\/app\/Manager\/Views\/property.html"
     },
-    "2895598ccb22e67aa53b0553cf3af1f7": {
-        "lastModified": 1625624842,
-        "hash": "109bfabf7cd270bb0a62c998547468d7",
-        "path": "\/Caches\/Tmp\/2895598ccb22e67aa53b0553cf3af1f7.cache",
-        "file": ".\/.\/app\/Manager\/Custom\/\/property-header.html"
-    },
     "5b52bc19991296486a08e08379694a85": {
         "lastModified": 1606382733,
         "hash": "867edcc07f995693f534df995dc7071e",
         "path": "\/Caches\/Tmp\/5b52bc19991296486a08e08379694a85.cache",
         "file": ".\/.\/app\/Manager\/Custom\/\/property-footer.html"
     },
-    "e156e9649e8760b78e46a36abc69589a": {
-        "lastModified": 1608626117,
-        "hash": "358f7f84579ea0ca80fae9c019ac3827",
-        "path": "\/Caches\/Tmp\/e156e9649e8760b78e46a36abc69589a.cache",
-        "file": ".\/.\/app\/Manager\/Views\/frontdesk.html"
-    },
     "afe893ac7332468af32ff103a5cadfab": {
         "lastModified": 1608560722,
         "hash": "d41d8cd98f00b204e9800998ecf8427e",
         "path": "\/Caches\/Tmp\/afe893ac7332468af32ff103a5cadfab.cache",
         "file": ".\/.\/app\/Manager\/Static\/\/frontdesk_template.html"
+    },
+    "e156e9649e8760b78e46a36abc69589a": {
+        "lastModified": 1608626117,
+        "hash": "358f7f84579ea0ca80fae9c019ac3827",
+        "path": "\/Caches\/Tmp\/e156e9649e8760b78e46a36abc69589a.cache",
+        "file": ".\/.\/app\/Manager\/Views\/frontdesk.html"
     }
 }

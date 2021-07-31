@@ -1,5 +1,0 @@
-<?php
-use function Lightroom\Templates\Functions\{controller};
-use function Lightroom\Requests\Functions\{session, cookie, get};
-use function Lightroom\Common\Functions\csrf;
-?><h1>This is my main header <?=$name?></h1>

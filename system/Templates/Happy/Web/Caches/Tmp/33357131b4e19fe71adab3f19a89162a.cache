@@ -1,5 +1,0 @@
-<?php
-use function Lightroom\Templates\Functions\{controller};
-use function Lightroom\Requests\Functions\{session, cookie, get};
-use function Lightroom\Common\Functions\csrf;
-?><h2>This is my home view <?=$name?></h2>
