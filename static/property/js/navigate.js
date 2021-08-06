@@ -85,7 +85,7 @@
                         "<div class='partnernav__dropdown'>"+
                             "<a href='#' class='partnernav__link'>"+
                                 "<i class='bx bx-calendar partnernav__icon' ></i>"+
-                                "<span class='partnernav__name'>Booking Management</span>"+
+                                "<span class='partnernav__name'>Booking Management 1</span>"+
                                 "<i class='bx bx-chevron-down partnernav__icon partnernav__dropdown-icon'></i>"+
                             "</a>"+
 
@@ -100,9 +100,14 @@
                             "</div>"+
                         "</div>"+
 
-                        "<a href='#' class='partnernav__link'>"+
-                            "<i class='bx bx-trip partnernav__icon' ></i>"+
-                            "<span class='partnernav__name'>Channel Manager</span>"+
+                        "<a href='"+phpvars.FRONTDESK_MANAGER+"' target='_blank' class='partnernav__link'>"+
+                            "<i class='bx bx-calendar partnernav__icon' ></i>"+
+                            "<span class='partnernav__name'>Booking Manager</span>"+
+                        "</a>"+
+
+                        "<a href='#reservation/avaliability' target='_blank' class='partnernav__link'>"+
+                            "<i class='bx bx-usb partnernav__icon' ></i>"+
+                            "<span class='partnernav__name'>Avaliability Manager</span>"+
                         "</a>"+
                         
                         "<div class='partnernav__dropdown'>"+
@@ -122,19 +127,30 @@
                         "<div class='partnernav__dropdown'>"+
                             "<a href='#' class='partnernav__link'>"+
                                 "<i class='bx bx-bed partnernav__icon' ></i>"+
-                                "<span class='partnernav__name'>Room Setting</span>"+
+                                "<span class='partnernav__name'>Rooms & Halls</span>"+
                                 "<i class='bx bx-chevron-down partnernav__icon partnernav__dropdown-icon'></i>"+
                             "</a>"+
 
                             "<div class='partnernav__dropdown-collapse'>"+
                                 "<div class='partnernav__dropdown-content'>"+
-                                    "<a href='#rooms' class='partnernav__dropdown-item'>Category</a>"+
-                                    "<a href='#rooms/number' class='partnernav__dropdown-item'>List</a>"+
-                                    "<a href='#rooms' class='partnernav__dropdown-item'>Inventory</a>"+
-                                    "<a href='#rooms' class='partnernav__dropdown-item'>Extra Service</a>"+
+                                    "<a href='#rooms' class='partnernav__dropdown-item'>Room Category</a>"+
+                                    "<a href='#rooms/number' class='partnernav__dropdown-item'>Room List</a>"+
+                                    "<a href='#halls' class='partnernav__dropdown-item'>Hall List</a>"+
+                                    // "<a href='#rooms' class='partnernav__dropdown-item'>Inventory</a>"+
+                                    "<a href='#extra-services' class='partnernav__dropdown-item'>Extra Services</a>"+
                                 "</div>"+
                             "</div>"+
                         "</div>"+
+
+                        "<a href='#channel-manager' class='partnernav__link'>"+
+                            "<i class='bx bx-trip partnernav__icon' ></i>"+
+                            "<span class='partnernav__name'>Channel Manager</span>"+
+                        "</a>"+
+
+                        "<a href='#hms' class='partnernav__link'>"+
+                            "<i class='bx bx-hotel partnernav__icon'></i>"+
+                            "<span class='partnernav__name'>HMS</span>"+
+                        "</a>"+
 
                         "<div class='partnernav__dropdown'>"+
                             "<a href='#' class='partnernav__link'>"+
@@ -168,7 +184,7 @@
                                     "<a href='#reports' class='partnernav__dropdown-item'>Inventory</a>"+
                                 "</div>"+
                             "</div>"+
-                        "</div>"+
+                        "</div>"+                        
 
                         "<a href='#settings' class='partnernav__link'>"+
                             "<i class='bx bx-cog partnernav__icon'></i>"+
@@ -192,7 +208,7 @@
 
         let page = hash.split("/")[0];
 
-        DrawNav()
+        DrawNav();
         if (page === "") {
                 location.hash = "#property";
             DrawProperty();
@@ -280,6 +296,22 @@
                 DrawCustomerProfile();
                 break;
 
+            case "#hms":
+                ShowModal('Coming Soon!');
+                break;
+
+            case "#channel-manager":
+                ShowModal('Coming Soon!');
+                break;
+
+            case "#extra-services":
+                ShowModal('Coming Soon!');
+                break;
+
+            case "#halls":
+                ShowModal('Coming Soon!');
+                break;
+
             default:
                 break;
         }
@@ -336,9 +368,9 @@
                         "<div id='state_info' class='property_item'>"+"</div>"+
                         "<div id='phone_info' class='property_item'>"+"</div>"+
                     "</div>"+
-                    "<div class='double_column property_data'>"+
+                    "<div class='triple_column property_data'>"+
                         "<div id='email_info' class='property_item'>"+"</div>"+
-                        "<div id='address_info' class='property_item'>"+"</div>"+
+                        "<div id='address_info' class='property_item' style='grid-column-start: 2; grid-column-end: 4;'>"+"</div>"+
                     "</div>"+
                     // "<div class='single_column property_data'>"+
                     // "</div>"+                    
@@ -572,8 +604,9 @@
             $("#menu").html(
 
                 "<div class='l-pad-2 s-pad-1'>" +
-                "<h3 class='ui header' style='font-family: varela_roundregular; color: dimgray;'>" +
-                "<img src='"+phpvars.CDN_URL+"/images/roomservice.png' style='width: 40px; margin-top: 0px;'> Room/Hall Category" +
+                "<h3 class='ui header' style='font-family: varela_roundregular; color: dimgray; display: flex;gap: 8px; align-items: flex-end;'>" +
+                // "<img src='"+phpvars.CDN_URL+"/images/roomservice.png' style='width: 40px; margin-top: 0px;'> Room/Hall Category" +
+                "<i class='bx bx-bed' style='font-size: 29px;'></i> Room/Hall Category" +
                 "</h3>" +
                 "</div>" +
 
@@ -587,14 +620,25 @@
             $("#menu").html(
 
                 "<div class='l-pad-2 s-pad-1'>" +
-                "<h3 class='ui header' style='font-family: varela_roundregular; color: dimgray;'>" +
-                "<img src='"+phpvars.CDN_URL+"/images/bed_1.png' style='width: 40px; margin-top: 0px;'> Rooms" +
+                "<h3 class='ui header' style='font-family: varela_roundregular; color: dimgray; display: flex;gap: 8px; align-items: flex-end;'>" +
+                // "<img src='"+phpvars.CDN_URL+"/images/bed_1.png' style='width: 40px; margin-top: 0px;'> Rooms" +
+                "<i class='bx bx-bed' style='font-size: 29px;'></i> Rooms" +
                 "</h3>" +
                 "</div>" +
 
                 "<div class='pad-2'>" +
-                "<a href='#new-room'><button class='ui blue fluid button''>New room</button></a>" +
+                // "<a href='#new-room'><button class='ui blue fluid button''>Add room</button></a>" +
+                "<button onclick='toNewRoom()' class='ui blue fluid button''>Add room</button>" +
                 "</div> ");
+        }
+    }
+
+    function toNewRoom(){
+        let roomcategory_count = JSON.parse(localStorage.getItem('roomcategory_count'));
+        if (roomcategory_count > 0) {            
+            location.hash = "#new-room";
+        }else{
+            ShowModal('Please add a room category');
         }
     }
 

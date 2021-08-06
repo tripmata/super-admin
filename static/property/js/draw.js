@@ -28,8 +28,9 @@ function DrawNewRoomCategory()
     $("#menu").html(
 
         "<div class='l-pad-2 s-pad-1'>" +
-        "<h3 class='ui header' style='font-family: varela_roundregular; color: dimgray;'>" +
-        "<img src='"+phpvars.CDN_URL+"/images/roomservice.png' style='width: 40px; margin-top: 0px;'> Room/Hall Category" +
+        "<h3 class='ui header' style='font-family: varela_roundregular; color: dimgray; display: flex;gap: 8px; align-items: flex-end;'>" +
+        // "<img src='"+phpvars.CDN_URL+"/images/roomservice.png' style='width: 40px; margin-top: 0px;'> Room/Hall Category" +
+        "<i class='bx bx-bed' style='font-size: 29px;'></i> Add Category" +
         "</h3>" +
         "</div>" +
 

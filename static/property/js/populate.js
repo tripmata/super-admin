@@ -1,6 +1,6 @@
 
-	const reportCache = {reservations : [], customers : [], inHouseGuests : [], payments : [], users : []};
-
+	const reportCache = {reservations : [], customers : [], inHouseGuests : [], payments : [], users : []}
+	
 	function populatePropertySettings()
 	{
 		$(".load-slot").addClass("ui placeholder");
@@ -290,7 +290,9 @@
 												"</div>"+
 	
 												"<div class='review_text center_vertical'>"+
-													"<p>"+review.Body+"</p>"+
+													"<p style='white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'>"+
+													review.Body+
+													"</p>"+
 												"</div>"+
 	
 												"<div class='review_date'>"+
@@ -398,7 +400,7 @@
 
 						// add other info
 						analytics[6].innerHTML = "<h2>"+json.dueToCheckout+"</h2>"+"<span>Due to checkout</span>";
-						analytics[7].innerHTML = "<h2>"+json.checkOutOverdue+"</h2>"+"<span>Check-out overdue</span>";
+						analytics[7].innerHTML = "<h2>"+json.checkOutOverdue+"</h2>"+"<span>Overdue Lodging</span>";
 						analytics[8].innerHTML = "<h2>"+json.totalReviewScore+"</h2>"+"<span>Total review score</span>";
 						analytics[9].innerHTML = "<h2>"+json.totalReviewCount+"</h2>"+"<span>Total reviews</span>";
 						analytics[10].innerHTML = "<h2>"+json.reviewsThisMonth+"</h2>"+"<span>This month reviews</span>";
@@ -3255,6 +3257,24 @@
 				//
 			}
 		}, request);
+
+
+		let category_request = {};
+		category_request.job = "list room category";
+		
+		postJson("hms-admin/worker", function(data, status){
+			if(status == "done"){
+				let room_categories = JSON.parse(data);
+				if(d.status == "success"){
+					localStorage.setItem('roomcategory_count', room_categories.data.length);
+				}else{
+					localStorage.setItem('roomcategory_count', 0);
+				}
+
+			}
+
+		}, category_request);
+		
 	}
 
 	function populateSettings()
