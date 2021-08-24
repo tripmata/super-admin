@@ -41,17 +41,18 @@ $set->LOCAL_CSS = HOME . '/static/css';
 $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost:';
 
 // use development constants
-if (preg_match('/(localhost)(:[0-9]+)/', $host)) :
+if (preg_match('/(frontdesk\.test)/', $host)) :
 
-    $set->CDN_URL = 'http://localhost:8888/tripmata-suites/Storage/client/';
-    $set->FRONTDESK_CDN = 'http://localhost:8888/tripmata-suites/Storage/frontdesk/';
-    $set->FILES_CDN = 'http://localhost:8888/tripmata-suites/Storage/files/';
-    $set->TRIP_MATA_URL = 'http://localhost:8888/tripmata-suites/ClientArea/';
-    $set->REDIRECT_TO = 'http://localhost:8888/tripmata-suites/ListingArea/';
-    $set->FRONTDESK_URL = 'http://localhost:8888/tripmata-suites/FrontDeskArea/';
-    $set->LISTING_SERVICE_API = 'http://localhost:8888/tripmata-suites/ListingServices/';
-    $set->CLIENT_SERVICE_API = 'http://localhost:8888/tripmata-suites/ClientServices/';
-    $set->STORAGE_API = 'http://localhost:8888/tripmata-suites/Storage/';
+    $set->CDN_URL = 'http://frontdesk.test/Storage/client/';
+    $set->FRONTDESK_CDN = 'http://frontdesk.test/Storage/frontdesk/';
+    $set->FILES_CDN = 'http://frontdesk.test/Storage/files/';
+    $set->TRIP_MATA_URL = 'http://frontdesk.test/ClientArea/';
+    $set->REDIRECT_TO = 'http://frontdesk.test/ListingArea/';
+    $set->FRONTDESK_URL = 'http://frontdesk.test/FrontDeskArea/';
+    $set->LISTING_SERVICE_API = 'http://frontdesk.test/ListingServices/';
+    $set->CLIENT_SERVICE_API = 'http://frontdesk.test/ClientServices/';
+    $set->STORAGE_API = 'http://frontdesk.test/Storage/';
+
 
 else:
 

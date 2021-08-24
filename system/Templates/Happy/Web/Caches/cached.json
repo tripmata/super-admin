@@ -1,48 +1,48 @@
 {
     "01cf98c3e8deca9b1eedb05bfc7a68c3": {
-        "lastModified": 1608048274,
-        "hash": "5f936f7f973c392d7c813fb5cc169b11",
+        "lastModified": 1624956659,
+        "hash": "31bf21f222997e14925e51980736d82c",
         "path": "\/Caches\/Tmp\/01cf98c3e8deca9b1eedb05bfc7a68c3.cache",
         "file": ".\/.\/app\/Manager\/Custom\/header.html"
     },
     "08d8e0617304e0c51dd8115d3595a4b7": {
-        "lastModified": 1606466680,
-        "hash": "0e76c921031c71ca59f8e442c0d869ee",
+        "lastModified": 1624956659,
+        "hash": "40085eda066f13a39b144c1257fe3d2b",
         "path": "\/Caches\/Tmp\/08d8e0617304e0c51dd8115d3595a4b7.cache",
         "file": ".\/.\/app\/Manager\/Views\/home.html"
     },
     "745fd955f5d90709c86c73588719c065": {
-        "lastModified": 1606382751,
-        "hash": "a67adc482e9bb289edf6df3d2ccf425b",
+        "lastModified": 1624956659,
+        "hash": "bf12ab832786bfda6beab5f114648794",
         "path": "\/Caches\/Tmp\/745fd955f5d90709c86c73588719c065.cache",
         "file": ".\/.\/app\/Manager\/Custom\/footer.html"
     },
     "2895598ccb22e67aa53b0553cf3af1f7": {
-        "lastModified": 1627577386,
-        "hash": "01a9970db7e26847f0a57da1bbfb361e",
+        "lastModified": 1627633908,
+        "hash": "041cd5282a08bbbbd2039026cb3d23f1",
         "path": "\/Caches\/Tmp\/2895598ccb22e67aa53b0553cf3af1f7.cache",
         "file": ".\/.\/app\/Manager\/Custom\/\/property-header.html"
     },
     "53395354b872e9aa438b375ac90abae7": {
-        "lastModified": 1625624913,
-        "hash": "bc11a3865ab2644aa35badbcb19ed108",
+        "lastModified": 1626161806,
+        "hash": "155fff6987b553e6363b60469a3d0252",
         "path": "\/Caches\/Tmp\/53395354b872e9aa438b375ac90abae7.cache",
         "file": ".\/.\/app\/Manager\/Views\/property.html"
     },
     "5b52bc19991296486a08e08379694a85": {
-        "lastModified": 1606382733,
-        "hash": "867edcc07f995693f534df995dc7071e",
+        "lastModified": 1624956659,
+        "hash": "09b570b12d856417aefa3b727c0ee770",
         "path": "\/Caches\/Tmp\/5b52bc19991296486a08e08379694a85.cache",
         "file": ".\/.\/app\/Manager\/Custom\/\/property-footer.html"
     },
     "afe893ac7332468af32ff103a5cadfab": {
-        "lastModified": 1608560722,
+        "lastModified": 1624956659,
         "hash": "d41d8cd98f00b204e9800998ecf8427e",
         "path": "\/Caches\/Tmp\/afe893ac7332468af32ff103a5cadfab.cache",
         "file": ".\/.\/app\/Manager\/Static\/\/frontdesk_template.html"
     },
     "e156e9649e8760b78e46a36abc69589a": {
-        "lastModified": 1608626117,
+        "lastModified": 1624956659,
         "hash": "358f7f84579ea0ca80fae9c019ac3827",
         "path": "\/Caches\/Tmp\/e156e9649e8760b78e46a36abc69589a.cache",
         "file": ".\/.\/app\/Manager\/Views\/frontdesk.html"

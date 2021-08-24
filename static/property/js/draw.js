@@ -3121,9 +3121,12 @@ function drawPropertyRules(id, property)
 
         "                       <div class='widget pad-1' style='border: 3px solid rgb(245,245,245);'>" +
         "                           <label><input id='cancellation' type='checkbox' "+(property.cancellation ? "checked" : "")+" data-show='cancellation'/><span style='font-weight: bold;'>" +
-        "                               Booking Cancellation" +
-        "                           </span></label><br/><br/><div data-show-at='cancellation'>" +
-        "                           <span>Cancellation period before arrival.</span><br/>" +
+        "                              Allow Booking Cancellation" +
+        "                           </span></label><div style='margin-top: 1rem;' data-show-at='cancellation'>" +
+        "                           <span>Cancellation period before "+
+        "                           <input id='cancel-time' value='"+property.canceltime+"' class='wix-textbox' type='time' style='border-radius: 7px; padding: 1px 4px 0px;'/>" + " on arrival date."+
+        "                           </span><br/>" +
+                           
         "                           <div class='ui left labeled small fluid input'>" +
         "                               <label class='ui label'>days</label>" +
         "                               <input id='cancel-days' class='wix-textbox' type='text' value='"+property.canceldays+"' style='border-radius: 0px;'/>" +
