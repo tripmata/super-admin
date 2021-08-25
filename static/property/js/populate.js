@@ -53,6 +53,7 @@
 						cancellation : d.data.Cancellation,
 						canceldays : d.data.Canceldays,
 						cancelhour : d.data.Cancelhours,
+						canceltime : d.data.Canceltime,
 						damagedeposit : d.data.Damagedeposit,
 						damageamount : d.data.Damagedepositamount,
 						earlycheckout : d.data.Earlycheckout,

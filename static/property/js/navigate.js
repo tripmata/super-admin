@@ -97,18 +97,18 @@
                             "<div class='partnernav__dropdown-collapse'>"+
                                 "<div class='partnernav__dropdown-content'>"+
                                     "<a href='#reservation' class='partnernav__dropdown-item'>Reservations</a>"+
-                                    "<a href='#reservation/customers' class='partnernav__dropdown-item'>Customers</a>"+
+                                    // "<a href='#reservation/customers' class='partnernav__dropdown-item'>Customers</a>"+
                                     "<a href='#reservation/lodging' class='partnernav__dropdown-item'>In-house Guest</a>"+
                                     "<a href='#reservation/avaliability' class='partnernav__dropdown-item'>Avaliability Manager</a>"+
                                 "</div>"+
                             "</div>"+
                         "</div>"+
 
-                        "<a href='#reservation/avaliability' target='_blank' class='partnernav__link'>"+
-                            "<i class='bx bx-usb partnernav__icon' ></i>"+
-                            "<span class='partnernav__name'>Avaliability Manager</span>"+
+                        "<a href='#reservation/customers' target='_blank' class='partnernav__link'>"+
+                            "<i class='bx bx-user-circle partnernav__icon' ></i>"+
+                            "<span class='partnernav__name'>Customers</span>"+
                         "</a>"+
-                        
+                    
                         "<div class='partnernav__dropdown'>"+
                             "<a href='#' class='partnernav__link'>"+
                                 "<i class='bx bxs-coupon partnernav__icon' ></i>"+
@@ -149,6 +149,11 @@
                         "<a href='#hms' class='partnernav__link'>"+
                             "<i class='bx bx-hotel partnernav__icon'></i>"+
                             "<span class='partnernav__name'>HMS</span>"+
+                        "</a>"+
+
+                        "<a href='#messaging' class='partnernav__link'>"+
+                            "<i class='bx bx-envelope partnernav__icon'></i>"+
+                            "<span class='partnernav__name'>Messaging</span>"+
                         "</a>"+
 
                         "<div class='partnernav__dropdown'>"+
@@ -1502,6 +1507,7 @@
             property.formType = $("#detailed-form").prop("checked") ? "detailed" : "simple";
             property.cancellation = $("#cancellation").prop("checked");
             property.canceldays = Number($("#cancel-days").val());
+            property.canceltime = $("#cancel-time").val();
             property.cancelhour = Number($("#cancel-hours").val());
             property.damagedeposit = $("#damage-deposite").prop("checked");
             property.damageamount = Number($("#damage-amount").val());
